@@ -11,8 +11,8 @@ public class Application extends Controller {
         return ok(index.render("Novo Tasdasdatulo asdgyuas"));
     }
 
-    public Result cadastro() {
-        return ok(cadastro.render());
+    public Result login() {
+        return ok(login.render());
     }
 
 }
