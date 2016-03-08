@@ -1,20 +1,35 @@
 @main("Login") {
     <div class="container">
+        <form class="form-horizontal" id="login-position">
+            <fieldset>
 
-        <form class="form-signin">
-            <h2 class="form-signin-heading">Login</h2>
-            <label for="inputEmail" class="sr-only">Email:</label>
-            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-            <label for="inputPassword" class="sr-only">Password</label>
-            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" value="remember-me"> Remember me
-                </label>
-            </div>
-            <button class="btn btn-lg btn-primary" type="submit">Entrar</button>
-            <a href="../" class="btn btn-lg btn-default" type="back" role="button">Voltar</a>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="nome">Usuario:</label>
+                    <div class="col-md-4">
+                        <input id="nome" name="nome" type="text" placeholder="" class="form-control input-md" required="">
+
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="senha">Senha: </label>
+                    <div class="col-md-4">
+                        <input id="senha" name="senha" type="password" placeholder="" class="form-control input-md" required="">
+
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="button1id"></label>
+                    <div class="col-md-8">
+                        <button class="btn btn-lg btn-primary" type="submit">Entrar</button>
+                        <a href="/" class="btn btn-lg btn-default" type="back" role="button">Voltar</a>
+                    </div>
+                </div>
+            </fieldset>
         </form>
-
     </div>
-}
+    }
