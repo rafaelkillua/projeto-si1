@@ -1,3 +1,5 @@
+/* MAIN CSS */
+
 body {
     padding-top: 20px;
     padding-bottom: 20px;
@@ -5,4 +7,20 @@ body {
 
 .navbar {
     margin-bottom: 20px;
+}
+
+.navbarButton:hover {
+    background: #ebeaeb;
+}
+
+.navbarButton:active {
+    background: #ebeaeb;
+}
+
+/* MAIN INDEX */
+
+.indexBody {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: large;
 }
