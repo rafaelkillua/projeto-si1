@@ -15,4 +15,5 @@ public class Application extends Controller {
         return ok(login.render());
     }
 
+    public Result cadastro() {return ok(cadastro.render()); }
 }
