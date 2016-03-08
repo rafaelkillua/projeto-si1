@@ -24,3 +24,7 @@ body {
     padding-bottom: 20px;
     font-size: large;
 }
+
+#login-position {
+    padding-top: 50px;
+}
