@@ -1,16 +1,25 @@
 @main("Cadastro") {
     <div class="container">
-        <form class="form-horizontal">
+        <form id="cadastroForm" class="form-horizontal">
             <fieldset>
 
                     <!-- Form Name -->
-                <legend>Cadastro</legend>
+                <legend align="center">Dados pessoais</legend>
 
                     <!-- File Button -->
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="foto">Foto 3x4: </label>
                     <div class="col-md-4">
                         <input id="foto" name="foto" class="input-file" type="file">
+                    </div>
+                </div>
+
+                    <!-- Radio buttons-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="foto">Tipo de cadastro: </label>
+                    <div class="col-md-4">
+                        <input id="tipo" name="tipo" class="radio-button" type="radio" checked="" onclick="desativarQtde()"> Passageiro
+                        <input id="tipo" name="tipo" class="radio-button" type="radio" onclick="ativarQtde()"> Motorista
                     </div>
                 </div>
 
@@ -24,6 +33,7 @@
                 </div>
 
                     <!-- Select Basic -->
+                <!-- NAO PRECISA DO SEXO
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="sexo">Sexo:</label>
                     <div class="col-md-4">
@@ -33,6 +43,7 @@
                         </select>
                     </div>
                 </div>
+                -->
 
                     <!-- Text input-->
                 <div class="form-group">
@@ -47,7 +58,7 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="telefone">Telefone: </label>
                     <div class="col-md-4">
-                        <input id="telefone" name="telefone" type="text" placeholder="" class="form-control input-md" required="">
+                        <input id="telefone" name="telefone" type="text" placeholder="(xx) x xxxx-xxxx" class="form-control input-md" required="">
 
                     </div>
                 </div>
@@ -56,7 +67,7 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="email">E-mail: </label>
                     <div class="col-md-4">
-                        <input id="email" name="email" type="text" placeholder="" class="form-control input-md" required="">
+                        <input id="email" name="email" type="email" placeholder="x (at) ccc.ufcg.edu.br" class="form-control input-md" required="">
 
                     </div>
                 </div>
@@ -79,12 +90,38 @@
                     </div>
                 </div>
 
+                <legend align="center">Endereço</legend>
+
+                    <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="rua">Rua:</label>
+                    <div class="col-md-4">
+                        <input id="rua" name="rua" type="text" placeholder="" class="form-control input-md" required="">
+                    </div>
+                </div>
+
+                    <!-- Text input -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="bairro">Bairro:</label>
+                    <div class="col-md-4">
+                        <input id="bairro" name="bairro" type="text" placeholder="" class="form-control input-md" required="">
+                    </div>
+                </div>
+
+                    <!-- Text input -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="qtde">Quantidade de <br> passageiros:</label>
+                    <div class="col-md-4">
+                        <input id="qtde" name="qtde" type="number" placeholder="" class="form-control input-md" disabled>
+                    </div>
+                </div>
+
                     <!-- Button (Double) -->
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="button1id"></label>
                     <div class="col-md-8">
                         <button id="cadastrar" name="cadastrar" class="btn btn-success">Cadastrar</button>
-                        <button id="limpar" name="limpar" class="btn btn-danger">Limpar</button>
+                        <button id="limpar" name="limpar" class="btn btn-danger" type="reset">Limpar</button>
                     </div>
                 </div>
             </fieldset>

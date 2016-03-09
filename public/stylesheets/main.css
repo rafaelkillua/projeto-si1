@@ -1,4 +1,4 @@
-/* MAIN CSS */
+/* MAIN */
 
 body {
     padding-top: 20px;
@@ -17,7 +17,9 @@ body {
     background: #ebeaeb;
 }
 
-/* MAIN INDEX */
+/* FIM DO MAIN*/
+
+/* INDEX */
 
 .indexBody {
     padding-top: 20px;
@@ -28,3 +30,5 @@ body {
 #login-position {
     padding-top: 50px;
 }
+
+/* FIM DO INDEX */
