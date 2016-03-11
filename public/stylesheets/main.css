@@ -43,3 +43,49 @@ body {
 .testecor {
     background-color: crimson !important;
 }
+
+/* INICIO DO PERFIL */
+
+#perfil-box {
+    width: 1140px;
+    height: 280px;
+    position: relative;
+    border-radius: 5px;
+    margin-left: 302px;
+}
+
+#perfil-box-foto {
+    background: #fdfdfd ;
+    position: absolute;
+    top: 200px;
+    left: 10px;
+}
+
+#perfil-box-nome {
+    background: none ;
+    position: absolute;
+    top: 200px;
+    left: 200px;
+    font-size: 40px;
+    color: whitesmoke;
+
+}
+
+#perfil-box-matricula {
+    background: none ;
+    position: absolute;
+    top: 250px;
+    left: 202px;
+    font-size: 15px;
+    color: whitesmoke;
+}
+
+#perfil-box-navbar {
+    background: whitesmoke ;
+    width: 972px;
+    height: 50px;
+    margin-left: 470px;
+}
+
+
+/* FIM DO PERFIL */

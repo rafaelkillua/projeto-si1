@@ -1,0 +1,34 @@
+@main("Perfil") {
+
+  <div id="perfil-box">
+
+          <img src="@routes.Assets.versioned("/images/banner.jpg")" alt="">
+          <div id="perfil-box-nome">João Fulano</div>
+          <div id="perfil-box-matricula">Matricula: 11032016</div>
+          <div id="perfil-box-foto"><img src="@routes.Assets.versioned("/images/fofao.jpg")" width="150" height="150"></div>
+  </div>
+
+    <div id="perfil-box-navbar">
+
+        <nav>
+            <div>
+                <div >
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div>
+                    <ul class="nav navbar-nav">
+                        <li class="navbarButton"><a href="#">Atualizar Perfil</a></li>
+                        <li class="navbarButton"><a href="enderecos">Meu Endereço</a></li>
+                        <li class="navbarButton"><a href="agendarCarona">Agendar Carona</a></li>
+                        <li class="navbarButton"><a href="solicitacoes">Solicitar Carona</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+}
