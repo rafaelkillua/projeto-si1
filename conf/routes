@@ -8,7 +8,7 @@ GET     /login                      controllers.Application.login()
 GET     /cadastro                   controllers.Application.cadastro()
 GET     /agendarCarona              controllers.Application.agendarCarona()
 GET     /enderecos                  controllers.Application.enderecos()
-
+GET     /solicitacoes               controllers.Application.solicitacoes()
 
 
 # Map static resources from the /public folder to the /assets URL path
