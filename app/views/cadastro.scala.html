@@ -8,18 +8,21 @@
 
                     <!-- File Button -->
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="foto">Foto 3x4: </label>
-                    <div class="col-md-4">
-                        <input id="foto" name="foto" class="input-file" type="file">
+                    <label class="col-md-4 control-label" for="foto">Foto: </label>
+                    <div class="col-md-8">
+                        <img id="preview" alt="your image" width="120" src="@routes.Assets.versioned("images/placeholder.png")" />
+                        <input id="foto" name="foto" class="input-file" type="file" accept="image/jpeg" onchange="readURL(this)">
                     </div>
                 </div>
 
                     <!-- Radio buttons-->
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="foto">Tipo de cadastro: </label>
+                    <label class="col-md-4 control-label" for="tipo">Tipo de cadastro: </label>
                     <div class="col-md-4">
-                        <input id="tipo" name="tipo" class="radio-button" type="radio" checked="" onclick="desativarQtde()"> Passageiro
-                        <input id="tipo" name="tipo" class="radio-button" type="radio" onclick="ativarQtde()"> Motorista
+                        <input id="tipo1" name="tipo" class="radio-button" type="radio" checked="" onclick="desativarQtde()">
+                        Passageiro
+                        <input id="tipo2" name="tipo" class="radio-button" type="radio" onclick="ativarQtde()">
+                        Motorista
                     </div>
                 </div>
 
@@ -33,7 +36,7 @@
                 </div>
 
                     <!-- Select Basic -->
-                <!-- NAO PRECISA DO SEXO
+                    <!-- NAO PRECISA DO SEXO
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="sexo">Sexo:</label>
                     <div class="col-md-4">
@@ -118,10 +121,10 @@
 
                     <!-- Button (Double) -->
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="button1id"></label>
+                    <label class="col-md-4 control-label" for="cadastrar"></label>
                     <div class="col-md-8">
                         <button id="cadastrar" name="cadastrar" class="btn btn-success">Cadastrar</button>
-                        <button id="limpar" name="limpar" class="btn btn-danger" type="reset">Limpar</button>
+                        <button id="limpar" name="limpar" class="btn btn-primary" type="reset">Limpar</button>
                     </div>
                 </div>
             </fieldset>
