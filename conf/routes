@@ -6,6 +6,7 @@
 GET     /                           controllers.Application.index()
 GET     /login                      controllers.Application.login()
 GET     /cadastro                   controllers.Application.cadastro()
+GET     /agendarCarona              controllers.Application.agendarCarona()
 GET     /enderecos                  controllers.Application.enderecos()
 
 

@@ -13,5 +13,7 @@ public class Application extends Controller {
 
     public Result cadastro() {return ok(cadastro.render()); }
 
-    public Result enderecos() {return ok(enderecos.render()); }
+    public Result agendarCarona(){return ok(agendarCarona.render()); }
+
+   public Result enderecos() {return ok(enderecos.render()); }
 }
