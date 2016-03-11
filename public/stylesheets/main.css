@@ -32,3 +32,14 @@ body {
 }
 
 /* FIM DO INDEX */
+
+/* AGENDA CARONA */
+
+.agendaCarona {
+    width: 40px;
+    color: darkblue;
+}
+
+.testecor {
+    background-color: crimson !important;
+}
