@@ -17,8 +17,8 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="nome">Nome completo:</label>
                     <div class="col-md-4">
-                        <input id="nome" name="nome" type="text" value="João Fulano" class="form-control input-md" required="">
-
+                        <input id="nome" name="nome" type="text" value="" class="form-control input-md" required="">
+                        <script>document.getElementById("nome").value = getCookie("username")</script>
                     </div>
                 </div>
 

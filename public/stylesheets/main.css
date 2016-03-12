@@ -17,6 +17,13 @@ body {
     background: #ebeaeb;
 }
 
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: block;
+}
 /* FIM DO MAIN*/
 
 /* INDEX */

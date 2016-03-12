@@ -12,9 +12,8 @@
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
-        <script>checkCookie()</script>
     </head>
-    <body>
+    <body onload="checkCookie()">
         <!--
         <div class="container">
             <nav class="navbar navbar-default">
@@ -55,7 +54,7 @@
                 </div>
             </nav>
         </div> -->
-        <div id = "mainDiv" class="container">
+        <div id = "mainDiv" class="container hidden">
             <div id="perfil-box">
 
                 <img src="@routes.Assets.versioned("/images/banner.jpg")" alt="">
@@ -83,7 +82,7 @@
                                 <li class="navbarButton"><a href="enderecos">Meu Endereço</a></li>
                                 <li class="navbarButton"><a href="agendarCarona">Ofertas de Carona <span class="badge">3</span></a></li>
                                 <li class="navbarButton"><a href="solicitacoes">Solicitações Recebidas <span class="badge">3</span></a></li>
-                                <li class="navbarButton"><a href="/" type="button" onclick="deleteCookie('username')">Deslogar</a></li>
+                                <li class="navbarButton"><a href="/" type="button" onclick="deslogar()">Deslogar</a></li>
                             </ul>
                         </div>
                     </div>
