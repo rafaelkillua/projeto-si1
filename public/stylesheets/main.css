@@ -51,7 +51,6 @@ body {
     height: 280px;
     position: relative;
     border-radius: 5px;
-    margin-left: 302px;
 }
 
 #perfil-box-foto {
@@ -73,7 +72,6 @@ body {
     left: 200px;
     font-size: 40px;
     color: whitesmoke;
-
 }
 
 #perfil-box-matricula {
@@ -89,7 +87,7 @@ body {
     background: whitesmoke ;
     width: 972px;
     height: 50px;
-    margin-left: 470px;
+    margin-left: 160px;
 }
 
 

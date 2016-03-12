@@ -1,34 +1,68 @@
 @main("Perfil") {
+    <div class="container">
+        <form id="cadastroForm" class="form-horizontal">
+            <fieldset>
 
-  <div id="perfil-box">
+                    <!-- Form Name -->
+                <legend align="center">Alterar dados pessoais</legend>
 
-          <img src="@routes.Assets.versioned("/images/banner.jpg")" alt="">
-          <div id="perfil-box-nome">João Fulano</div>
-          <div id="perfil-box-matricula">Matricula: 11032016</div>
-          <div id="perfil-box-foto"><img src="@routes.Assets.versioned("/images/fofao.jpg")" width="150" height="150"></div>
-  </div>
-
-    <div id="perfil-box-navbar">
-
-        <nav>
-            <div>
-                <div >
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="foto">Foto: </label>
+                    <div class="col-md-8">
+                        <img id="preview" alt="your image" width="120" src="@routes.Assets.versioned("images/fofao.jpg")" />
+                        <input id="foto" name="foto" class="input-file" type="file" accept="image/jpeg" onchange="readURL(this)">
+                    </div>
                 </div>
-                <div>
-                    <ul class="nav navbar-nav">
-                        <li class="navbarButton"><a href="#">Atualizar Perfil</a></li>
-                        <li class="navbarButton"><a href="enderecos">Meu Endereço</a></li>
-                        <li class="navbarButton"><a href="agendarCarona">Solicitar Carona</a></li>
-                        <li class="navbarButton"><a href="solicitacoes">Solicitações Recebidas</a></li>
-                    </ul>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="nome">Nome completo:</label>
+                    <div class="col-md-4">
+                        <input id="nome" name="nome" type="text" value="João Fulano" class="form-control input-md" required="">
+
+                    </div>
                 </div>
-            </div>
-        </nav>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="matricula">Matrícula:</label>
+                    <div class="col-md-4">
+                        <input id="matricula" name="matricula" type="text" value="11032016" class="form-control input-md" required="">
+
+                    </div>
+                </div>
+
+                    <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="telefone">Telefone: </label>
+                    <div class="col-md-4">
+                        <input id="telefone" name="telefone" type="text" value="(83) 9 1234-5689" class="form-control input-md" required="">
+
+                    </div>
+                </div>
+
+                    <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="email">E-mail: </label>
+                    <div class="col-md-4">
+                        <input id="email" name="email" type="email" value="joao.fulano&#64;ccc.ufcg.edu.br" class="form-control input-md" required="">
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="qtde">Quantidade de <br> vagas:</label>
+                    <div class="col-md-4">
+                        <input id="qtde" name="qtde" type="number" value="0" class="form-control input-md">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="atualizar"></label>
+                    <div class="col-md-8">
+                        <button id="atualizar" name="atualizar" class="btn btn-success">Atualizar</button>
+                        <button id="limpar" name="limpar" class="btn btn-primary" type="reset">Resetar</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
     </div>
 }

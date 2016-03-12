@@ -3,7 +3,7 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.Application.login()
+GET     /                           controllers.Application.index()
 GET     /login                      controllers.Application.login()
 GET     /cadastro                   controllers.Application.cadastro()
 GET     /agendarCarona              controllers.Application.agendarCarona()

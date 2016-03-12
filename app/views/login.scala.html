@@ -1,4 +1,5 @@
-@main("Login") {
+@main("Login")  {
+
     <div class="container">
         <form id="loginForm" class="form-horizontal">
             <fieldset>
@@ -6,7 +7,7 @@
                 <legend align="center">Login</legend>
 
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="nome">Usuario:</label>
+                    <label class="col-md-4 control-label" for="nome">Usuário:</label>
                     <div class="col-md-4">
                         <input id="nome" name="nome" type="text" placeholder="" class="form-control input-md" required="">
 
@@ -26,10 +27,10 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="button1id"></label>
                     <div class="col-md-8">
-                        <a href="/perfil" name="buttonid" class="btn btn-success" role="button">Entrar</a>
-                        <a href="/" class="btn btn-primary" role="button">Voltar</a>
-                        <!-- Botão desativado para linkar o perfil -->
-                        <!--
+                        <a href="/" name="buttonid" class="btn btn-success" role="button" onclick="logar()">Entrar</a>
+                        <a href="/cadastro" name="buttonid" class="btn btn-default" role="button">Cadastre-se</a>
+                            <!-- Botão desativado para linkar o perfil -->
+                            <!--
                         <button name="button1id" class="btn btn-success">Entrar</button>
                         -->
                     </div>
