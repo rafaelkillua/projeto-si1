@@ -59,8 +59,13 @@ body {
     position: absolute;
     top: 200px;
     left: 10px;
-}
+    border-radius: 10px;
 
+}
+#perfil-box-foto img{
+    border: 2px solid black;
+    border-radius: 10px;
+}
 #perfil-box-nome {
     background: none ;
     position: absolute;
