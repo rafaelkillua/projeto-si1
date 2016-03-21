@@ -1,41 +1,33 @@
-@main("Login")  {
+@(loginForm: play.data.Form[FormularioLogin])
 
+@main("Login") {
     <div class="container">
-        <form id="loginForm" class="form-horizontal">
-            <fieldset>
+    @helper.form(routes.LoginController.logar(), 'class -> "form-horizontal") {
+        <legend align="center">Bem vindo ao CaronaUFCG. Faça seu login</legend>
 
-                <legend align="center">Bem vindo ao CaronaUFCG. Faça seu login</legend>
-
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="nome">Usuário:</label>
-                    <div class="col-md-4">
-                        <input id="nome" name="nome" type="text" placeholder="" class="form-control input-md" required="">
-
-                    </div>
-                </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="nome"></label>
+            <div class="col-md-4">
+            @helper.inputText(loginForm("nome"), 'class -> "form-control input-md", '_label -> "Login:")
+            </div>
+        </div>
 
 
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="senha">Senha: </label>
-                    <div class="col-md-4">
-                        <input id="senha" name="senha" type="password" placeholder="" class="form-control input-md" required="">
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="senha"></label>
+            <div class="col-md-4">
+            @helper.inputPassword(loginForm("senha"), 'class -> "form-control input-md", '_label -> "Senha:")
+            </div>
+        </div>
 
-                    </div>
-                </div>
 
-
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="button1id"></label>
-                    <div class="col-md-8">
-                        <a href="/" name="buttonid" class="btn btn-success" role="button" onclick="logar()">Entrar</a>
-                        <a href="/cadastro" name="buttonid" class="btn btn-default" role="button">Cadastre-se</a>
-                            <!-- Botão desativado para linkar o perfil -->
-                            <!--
-                        <button name="button1id" class="btn btn-success">Entrar</button>
-                        -->
-                    </div>
-                </div>
-            </fieldset>
-        </form>
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="button1id"></label>
+            <div class="col-md-8">
+                <button name="buttonid" class="btn btn-success" type="submit">Entrar</button>
+                <a href="/cadastro" name="buttonid" class="btn btn-default" role="button">Cadastre-se</a>
+            </div>
+        </div>
+    }
     </div>
 }
