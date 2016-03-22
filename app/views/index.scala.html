@@ -1,8 +1,43 @@
-@main("Carona UFCG") {
-    <body>
-        <div class="container indexBody">
-            <legend align="center">Bem vindo ao CaronaUFCG!</legend>
-            <a href="/" name="buttonid" class="btn btn-default" role="button" onclick="deslogar()">Clique aqui caso dê erro ou fique estranho</a>
+@(title: String)(usuario: Usuario)(content: Html)
+
+    @main(title) {
+        <div id = "mainDiv" class="container">
+            <div id="perfil-box">
+
+                <img src="@routes.Assets.versioned("/images/banner.jpg")" alt="">
+                <div id="perfil-box-nome">@usuario.getNome()</div>
+                <div id="perfil-box-matricula">Matricula: 11032016</div>
+                <div id="perfil-box-foto"><img src="@routes.Assets.versioned("/images/fofao.jpg")" width="150" height="150"></div>
+            </div>
+
+            <div id="perfil-box-navbar">
+
+                <nav>
+                    <div>
+                        <div >
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <div>
+                            <ul class="nav navbar-nav">
+                                <li class="navbarButton"><a href="/">Home</a></li>
+                                <li class="navbarButton"><a href="perfil">Atualizar Perfil</a></li>
+                                <li class="navbarButton"><a href="enderecos">Meu Endereço</a></li>
+                                <li class="navbarButton"><a href="agendarCarona">
+                                    Ofertas de Carona <span class="badge">3</span></a></li>
+                                <li class="navbarButton"><a href="solicitacoes">
+                                    Solicitações Recebidas <span class="badge">3</span></a></li>
+                                <li class="navbarButton"><a href="@routes.LoginController.deslogar()" type="button">
+                                    Deslogar</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
         </div>
-    </body>
-}
+        @content
+    }

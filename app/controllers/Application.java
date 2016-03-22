@@ -1,5 +1,6 @@
 package controllers;
 
+import models.Usuario;
 import play.*;
 import play.mvc.*;
 
@@ -7,10 +8,14 @@ import views.html.*;
 
 public class Application extends Controller {
 
-    public Result agendarCarona(){return ok(agendarCarona.render()); }
+    public static Usuario usuarioLogado() {
+        return new Usuario(session("logado"));
+    }
 
-    public Result enderecos() {return ok(enderecos.render()); }
+    public Result agendarCarona(){return ok(agendarCarona.render(usuarioLogado())); }
 
-    public Result solicitacoes() {return ok(solicitacoes.render()); }
+    public Result enderecos() {return ok(enderecos.render(usuarioLogado())); }
+
+    public Result solicitacoes() {return ok(solicitacoes.render(usuarioLogado())); }
 
 }
