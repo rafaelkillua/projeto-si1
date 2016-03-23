@@ -9,22 +9,20 @@ public abstract class Pessoa {
     private String matricula;
     private String telefone;
     private String senha;
-    private String rua;
-    private String bairro;
+    private Endereco endereco;
 
-    public Pessoa(String nome, String email, String matricula, String telefone, String senha){
+    public Pessoa(String nome, String email, String matricula, String telefone, String senha, String rua, String bairro){
         this.nome = nome;
         this.email = email;
         this.matricula = matricula;
         this.telefone = telefone;
         this.senha = senha;
+        endereco = new Endereco(rua, bairro);
     }
 
     public String getNome(){ return nome;}
 
-    public String getEmail() {
-        return email;
-    }
+    public String getEmail() { return email;}
 
     public String getTelefone() {
         return telefone;
@@ -33,5 +31,7 @@ public abstract class Pessoa {
     public String getMatricula() {
         return matricula;
     }
+
+    public Endereco getEndereco(){return endereco;}
 
 }

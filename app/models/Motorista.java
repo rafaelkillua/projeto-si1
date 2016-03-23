@@ -6,8 +6,8 @@ package models;
 public class Motorista extends Pessoa {
     private int qtdVagas;
 
-    public Motorista(String nome, String email, String matricula, String telefone, String senha, int qtdVagas){
-        super(nome, email, matricula, telefone, senha);
+    public Motorista(String nome, String email, String matricula, String telefone, String senha, String rua, String bairro, int qtdVagas){
+        super(nome, email, matricula, telefone, senha, rua, bairro);
         this.qtdVagas = qtdVagas;
     }
 
