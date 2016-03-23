@@ -12,6 +12,6 @@ public class Motorista extends Pessoa {
     }
 
     public int getQtdPassageiros(){
-        return qtdPassageiros;
+        return qtdVagas;
     }
 }
