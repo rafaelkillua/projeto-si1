@@ -12,6 +12,14 @@ public abstract class Pessoa {
     private String rua;
     private String bairro;
 
+    public Pessoa(String nome, String email, String matricula, String telefone, String senha){
+        this.nome = nome;
+        this.email = email;
+        this.matricula = matricula;
+        this.telefone = telefone;
+        this.senha = senha;
+    }
+
     public String getNome(){ return nome;}
 
     public String getEmail() {
@@ -26,7 +34,4 @@ public abstract class Pessoa {
         return matricula;
     }
 
-    public String getEndereco(){
-        return "Rua: " + rua + "\n" + "Bairro: " + bairro;
-    }
 }
