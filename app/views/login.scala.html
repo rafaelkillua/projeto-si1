@@ -1,4 +1,4 @@
-@(loginForm: play.data.Form[FormularioLogin])
+@(formLogin: play.data.Form[FormularioLogin])
 
 @main("Login") {
     <div class="container">
@@ -6,9 +6,9 @@
         <legend align="center">Bem vindo ao CaronaUFCG. Faça seu login</legend>
 
         <div class="form-group">
-            <label class="col-md-4 control-label" for="nome"></label>
+            <label class="col-md-4 control-label" for="email"></label>
             <div class="col-md-4">
-            @helper.inputText(loginForm("nome"), 'class -> "form-control input-md", '_label -> "Login:")
+            @helper.inputText(formLogin("email"), 'class -> "form-control input-md", '_label -> "E-mail:")
             </div>
         </div>
 
@@ -16,7 +16,7 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for="senha"></label>
             <div class="col-md-4">
-            @helper.inputPassword(loginForm("senha"), 'class -> "form-control input-md", '_label -> "Senha:")
+            @helper.inputPassword(formLogin("senha"), 'class -> "form-control input-md", '_label -> "Senha:", 'required -> "")
             </div>
         </div>
 

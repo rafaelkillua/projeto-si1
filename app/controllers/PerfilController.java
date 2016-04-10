@@ -6,5 +6,8 @@ import views.html.*;
 
 public class PerfilController extends Controller {
 
-    public Result perfil() {return ok(perfil.render(Application.usuarioLogado())); }
+    public Result atualizarPerfil() {
+        // TODO
+        return redirect("/");
+    }
 }

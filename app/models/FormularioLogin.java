@@ -5,6 +5,14 @@ package models;
  */
 
 public class FormularioLogin {
-    public String nome = "";
+    public String email = "";
     public String senha = "";
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
 }

@@ -2,30 +2,28 @@ package controllers;
 
 import models.FormularioLogin;
 import models.Usuario;
-import play.data.Form;
+import play.Logger;
 import play.mvc.Controller;
 import play.mvc.Result;
-import views.html.agendarCarona;
-import views.html.enderecos;
 import views.html.login;
-import views.html.solicitacoes;
 
 public class LoginController extends Controller {
 
-    final static Form<FormularioLogin> loginForm = play.data.Form.form(FormularioLogin.class);
-
-    public Result login() {
-        return ok(login.render(loginForm));
+    public Result logar() {
+        FormularioLogin login = Application.getInstance().getFormLogin().bindFromRequest().get();
+        try {
+            Usuario usuario = Application.getInstance().pesquisarUsuario(login.getEmail());
+            usuario.validaSenha(login.getSenha());
+            session("logado", usuario.getEmail());
+            Logger.info("Logou " + usuario.getEmail());
+        } catch (Exception e) {
+            Logger.error(e.getMessage());
+        }
+        return redirect("/");
     }
 
     public Result deslogar() {
         session().clear();
-        return redirect("/");
-    }
-
-    public Result logar() {
-        Form<FormularioLogin> loginForm = play.data.Form.form(FormularioLogin.class).bindFromRequest();
-        session("logado", loginForm.get().nome);
         return redirect("/");
     }
 

@@ -2,7 +2,7 @@
 
 @index("Perfil")(usuario) {
     <div class="container">
-        <form id="cadastroForm" class="form-horizontal">
+        @helper.form(routes.PerfilController.atualizarPerfil(), 'class -> "form-horizontal") {
             <fieldset>
 
                     <!-- Form Name -->
@@ -17,16 +17,16 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="nome">Nome completo:</label>
+                    <label class="col-md-4 control-label" for="email">Nome completo:</label>
                     <div class="col-md-4">
-                        <input id="nome" name="nome" type="text" value="@usuario.getNome()" class="form-control input-md" required="">
+                        <input id="email" name="email" type="text" value="@usuario.getNome()" class="form-control input-md" required="">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="matricula">Matrícula:</label>
                     <div class="col-md-4">
-                        <input id="matricula" name="matricula" type="text" value="11032016" class="form-control input-md" required="">
+                        <input id="matricula" name="matricula" type="text" value="@usuario.getMatricula()" class="form-control input-md" required="">
 
                     </div>
                 </div>
@@ -35,7 +35,7 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="telefone">Telefone: </label>
                     <div class="col-md-4">
-                        <input id="telefone" name="telefone" type="text" value="(83) 9 1234-5689" class="form-control input-md" required="">
+                        <input id="telefone" name="telefone" type="text" value="@usuario.getTelefone()" class="form-control input-md" required="">
 
                     </div>
                 </div>
@@ -44,7 +44,7 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="email">E-mail: </label>
                     <div class="col-md-4">
-                        <input id="email" name="email" type="email" value="joao.fulano&#64;ccc.ufcg.edu.br" class="form-control input-md" required="">
+                        <input id="email" name="email" type="email" value="@usuario.getEmail()" class="form-control input-md" required="">
 
                     </div>
                 </div>
@@ -52,18 +52,18 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="qtde">Quantidade de <br> vagas:</label>
                     <div class="col-md-4">
-                        <input id="qtde" name="qtde" type="number" value="0" class="form-control input-md">
+                        <input id="qtde" name="qtde" type="number" value="@usuario.getQuantidadeDeVagas().toString()" class="form-control input-md">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="atualizar"></label>
                     <div class="col-md-8">
-                        <button id="atualizar" name="atualizar" class="btn btn-success">Atualizar</button>
+                        <button id="atualizar" name="atualizar" class="btn btn-success" type="submit">Atualizar</button>
                         <button id="limpar" name="limpar" class="btn btn-primary" type="reset">Resetar</button>
                     </div>
                 </div>
             </fieldset>
-        </form>
+        }
     </div>
 }
