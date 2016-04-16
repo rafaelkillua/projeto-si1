@@ -5,8 +5,8 @@ package models;
  */
 public class Rota {
 
-    Endereco partida;
-    Endereco destino;
+    private Endereco partida;
+    private Endereco destino;
 
     public Rota(Endereco partida, Endereco destino) {
 
