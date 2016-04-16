@@ -17,13 +17,13 @@ public class CatalogoCaronas {
         catalogoCaronas.add(carona);
     }
 
-    public ArrayList<Carona> pesquisaCaronas(String dia, String hora, String bairro, String rua){
+    public ArrayList<Carona> pesquisaCaronas(String hora, String rua, String bairro){
 
         ArrayList<Carona> resultadoPesquisa = new ArrayList<>();
 
         for (Carona carona: catalogoCaronas) {
 
-            if((carona.getRua().equals(rua)) && (carona.getBairro().equals(bairro))) {
+            if((carona.getRota().getDestino().getRua().equals(rua)) && (carona.getRota().getDestino().getBairro().equals(bairro))) {
                 resultadoPesquisa.add(carona);
             }
         }
