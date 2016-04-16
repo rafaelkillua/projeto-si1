@@ -1,28 +1,27 @@
 package models;
 
 import java.util.ArrayList;
-import models.Caronas;
 
 /**
  * Created by Aillkeen on 16/04/2016.
  */
 public class CatalogoCaronas {
 
-    private ArrayList<Caronas> catalogoCaronas = new ArrayList<>();
+    private ArrayList<Carona> catalogoCaronas = new ArrayList<>();
 
     public CatalogoCaronas() {
     }
 
-    public void adicionarCaronas(Caronas carona){
+    public void adicionarCaronas(Carona carona){
 
         catalogoCaronas.add(carona);
     }
 
-    public ArrayList<Caronas> pesquisaCaronas(String dia, String hora, String bairro, String rua){
+    public ArrayList<Carona> pesquisaCaronas(String dia, String hora, String bairro, String rua){
 
-        ArrayList<Caronas> resultadoPesquisa = new ArrayList<>();
+        ArrayList<Carona> resultadoPesquisa = new ArrayList<>();
 
-        for (Caronas carona: catalogoCaronas) {
+        for (Carona carona: catalogoCaronas) {
 
             if((carona.getRua().equals(rua)) && (carona.getBairro().equals(bairro))) {
                 resultadoPesquisa.add(carona);
