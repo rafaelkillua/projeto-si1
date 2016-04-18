@@ -1,13 +1,14 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Aillkeen on 16/04/2016.
  */
 public class CatalogoCaronas {
 
-    private ArrayList<Carona> catalogoCaronas = new ArrayList<>();
+    private List<Carona> catalogoCaronas = new ArrayList<>();
 
     public CatalogoCaronas() {
     }
@@ -17,9 +18,9 @@ public class CatalogoCaronas {
         catalogoCaronas.add(carona);
     }
 
-    public ArrayList<Carona> pesquisaCaronas(String hora, String rua, String bairro){
+    public List<Carona> pesquisaCaronas(String hora, String rua, String bairro){
 
-        ArrayList<Carona> resultadoPesquisa = new ArrayList<>();
+        List<Carona> resultadoPesquisa = new ArrayList<>();
 
         for (Carona carona: catalogoCaronas) {
 

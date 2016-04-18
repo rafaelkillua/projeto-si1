@@ -1,8 +1,7 @@
 package models;
 
-import models.Rota;
-
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Aillkeen on 16/04/2016.
@@ -13,14 +12,15 @@ public class Carona {
     private Rota rota;
     private int vagasDisponiveis;
     private String emailMotorista;
-    private ArrayList<String> emailPassageiros = new ArrayList<>();
+    private List<String> emailPassageiros = new ArrayList<>();
 
-    public Carona(String hora, Endereco partida, Endereco destino, String emailMotorista) {
+    public Carona(String hora, Endereco partida, Endereco destino, String emailMotorista, int vagasDisponiveis) {
 
         this.hora = hora;
         rota.setPartida(partida);
         rota.setDestino(destino);
         this.emailMotorista = emailMotorista;
+        this.vagasDisponiveis = vagasDisponiveis;
     }
 
     public String getHora() {
@@ -55,7 +55,7 @@ public class Carona {
         this.emailMotorista = emailMotorista;
     }
 
-    public ArrayList<String> getEmailPassageiros() {
+    public List<String> getEmailPassageiros() {
         return emailPassageiros;
     }
 

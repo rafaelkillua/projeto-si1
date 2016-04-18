@@ -1,4 +1,4 @@
-package models;
+package models.formularios;
 
 import play.Logger;
 

@@ -1,3 +1,4 @@
+@import models.formularios.FormularioLogin
 @(formLogin: play.data.Form[FormularioLogin])
 
 @main("Login") {
@@ -8,7 +9,7 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for="email"></label>
             <div class="col-md-4">
-            @helper.inputText(formLogin("email"), 'class -> "form-control input-md", '_label -> "E-mail:")
+            @helper.inputText(formLogin("email"), 'class -> "form-control input-md", '_label -> "E-mail:", 'required -> "")
             </div>
         </div>
 
