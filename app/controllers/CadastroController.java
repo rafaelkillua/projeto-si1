@@ -1,12 +1,11 @@
 package controllers;
 
-import models.FormularioCadastro;
+import models.formularios.FormularioCadastro;
 import models.Usuario;
 import play.data.Form;
 import play.Logger;
 import play.mvc.Controller;
 import play.mvc.Result;
-import views.html.*;
 
 public class CadastroController extends Controller {
 
