@@ -1,5 +1,8 @@
 package models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Usuario {
     private String nome;
     private String email;
@@ -8,6 +11,8 @@ public class Usuario {
     private String senha;
     private Endereco endereco;
     private int quantidadeDeVagas;
+    private List<Integer> solicitacoesEnviadas = new ArrayList<>();
+    private List<Integer> solicitacoesRecebidas = new ArrayList<>();
 
     public Usuario(String nome, String email, String matricula, String telefone, String senha, String rua, String bairro, int quantidadeDeVagas){
         setNome(nome);
@@ -68,6 +73,14 @@ public class Usuario {
 
     public void setQuantidadeDeVagas(int quantidadeDeVagas) {
         this.quantidadeDeVagas = quantidadeDeVagas;
+    }
+
+    public List<Integer> getSolicitacoesEnviadas() {
+        return solicitacoesEnviadas;
+    }
+
+    public List<Integer> getSolicitacoesRecebidas() {
+        return solicitacoesRecebidas;
     }
 
     public void validaSenha(String senha) throws Exception {
