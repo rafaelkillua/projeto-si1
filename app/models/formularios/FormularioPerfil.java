@@ -11,4 +11,6 @@ public class FormularioPerfil {
     public String matricula;
     public String telefone;
     public int quantidadeDeVagas;
+    public String rua;
+    public String bairro;
 }

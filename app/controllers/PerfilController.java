@@ -21,6 +21,7 @@ public class PerfilController extends Controller {
                 usuarioLogado.setEmail(perfil.email);
                 session("logado", usuarioLogado.getEmail());
                 usuarioLogado.setQuantidadeDeVagas(perfil.quantidadeDeVagas);
+                usuarioLogado.setEndereco(perfil.rua, perfil.bairro);
             }
         } catch (Exception e) {
             Logger.error(e.getMessage());
