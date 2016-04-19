@@ -1,7 +1,7 @@
 @import models.formularios.FormularioLogin
 @(formLogin: play.data.Form[FormularioLogin])
 
-@main("Login") {
+@main("CaronaUFCG - Login") {
     <div class="container">
     @helper.form(routes.LoginController.logar(), 'class -> "form-horizontal") {
         <legend align="center">Bem vindo ao CaronaUFCG. Faça seu login</legend>

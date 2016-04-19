@@ -1,7 +1,7 @@
 @import models.formularios.FormularioCadastro
 @(formCadastro: play.data.Form[FormularioCadastro])
 
-@main("Cadastro") {
+@main("CaronaUFCG - Cadastro") {
     <div class="container">
     @helper.form(routes.CadastroController.cadastrar(), 'class -> "form-horizontal") {
         <fieldset>

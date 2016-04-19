@@ -29,7 +29,6 @@ body {
 /* INDEX */
 
 .indexBody {
-    padding-top: 20px;
     padding-bottom: 20px;
     font-size: large;
 }
@@ -47,15 +46,11 @@ body {
     color: darkblue;
 }
 
-.testecor {
-    background-color: crimson !important;
-}
-
 /* INICIO DO PERFIL */
 
 #perfil-box {
     width: 1140px;
-    height: 280px;
+    height: 118px;
     position: relative;
     border-radius: 5px;
 }
@@ -63,7 +58,7 @@ body {
 #perfil-box-foto {
     background: #fdfdfd ;
     position: absolute;
-    top: 200px;
+    top: 50px;
     left: 10px;
     border-radius: 10px;
 
@@ -75,8 +70,8 @@ body {
 #perfil-box-nome {
     background: none ;
     position: absolute;
-    top: 200px;
-    left: 200px;
+    top: 45px;
+    left: 180px;
     font-size: 40px;
     color: whitesmoke;
 }
@@ -84,8 +79,8 @@ body {
 #perfil-box-matricula {
     background: none ;
     position: absolute;
-    top: 250px;
-    left: 202px;
+    top: 95px;
+    left: 182px;
     font-size: 15px;
     color: whitesmoke;
 }
