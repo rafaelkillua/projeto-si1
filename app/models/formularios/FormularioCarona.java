@@ -5,10 +5,26 @@ package models.formularios;
  */
 
 public class FormularioCarona {
-    public String hora;
+    public String tipo;
+    public String horaPartida;
     public String ruaPartida;
     public String bairroPartida;
-    public String ruaDestino;
-    public String bairroDestino;
+    public String horaRetorno;
+    public String ruaRetorno;
+    public String bairroRetorno;
     public int vagas;
+
+    @Override
+    public String toString() {
+        return "FormularioCarona{" +
+                "tipo='" + tipo + '\'' +
+                ", horaPartida='" + horaPartida + '\'' +
+                ", ruaPartida='" + ruaPartida + '\'' +
+                ", bairroPartida='" + bairroPartida + '\'' +
+                ", horaRetorno='" + horaRetorno + '\'' +
+                ", ruaRetorno='" + ruaRetorno + '\'' +
+                ", bairroRetorno='" + bairroRetorno + '\'' +
+                ", vagas=" + vagas +
+                '}';
+    }
 }

@@ -12,14 +12,14 @@ public class Carona {
     private Rota rota;
     private int vagasDisponiveis;
     private String emailMotorista;
-    private List<String> emailPassageiros = new ArrayList<>();
+    private List<String> emailPassageiros;
 
     public Carona(String hora, Endereco partida, Endereco destino, String emailMotorista, int vagasDisponiveis) {
 
         this.hora = hora;
-        rota.setPartida(partida);
-        rota.setDestino(destino);
+        rota = new Rota(partida, destino);
         this.emailMotorista = emailMotorista;
+        emailPassageiros = new ArrayList<>();
         this.vagasDisponiveis = vagasDisponiveis;
     }
 

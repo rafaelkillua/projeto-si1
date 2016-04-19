@@ -1,7 +1,8 @@
-@(usuario: Usuario)
+@(usuario: Usuario)(qtdeCaronas: Integer)
 
 @index("Carona UFCG - Home")(usuario) {
     <div class="container indexBody">
         <legend align="center">Bem vindo ao CaronaUFCG!</legend>
+        <h1 align="center">Há @qtdeCaronas caronas cadastradas</h1>
     </div>
 }

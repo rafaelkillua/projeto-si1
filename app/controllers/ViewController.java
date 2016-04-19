@@ -16,7 +16,7 @@ public class ViewController extends Controller {
             return redirect("/login");
         }
         try {
-            return ok(index2.render(Application.getInstance().getUsuarioLogado()));
+            return ok(index2.render(Application.getInstance().getUsuarioLogado(), Application.getCatalogoCaronas().quantidadeDeCaronas()));
         } catch (Exception e) {
             Logger.error(e.getMessage());
             session().clear();
@@ -60,10 +60,10 @@ public class ViewController extends Controller {
         }
     }
 
-    public Result enderecos() {
+    public Result oferecerCarona() {
         try {
             Application.getInstance().getUsuarioLogado();
-            return ok(enderecos.render(Application.getInstance().getUsuarioLogado()));
+            return ok(oferecerCarona.render(Application.getInstance().getUsuarioLogado(), Application.getInstance().getFormCarona()));
         } catch (Exception e) {
             return redirect("/");
         }

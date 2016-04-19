@@ -49,3 +49,19 @@ function readURL(input) {
         reader.readAsDataURL(input.files[0]);
     }
 }
+
+
+function caronaIda() {
+    document.getElementById("partida").setAttribute("style", "");
+    document.getElementById("retorno").setAttribute("style", "display: none");
+}
+
+function caronaVolta() {
+    document.getElementById("partida").setAttribute("style", "display: none");
+    document.getElementById("retorno").setAttribute("style", "");
+}
+
+function caronaIdaVolta() {
+    document.getElementById("partida").setAttribute("style", "");
+    document.getElementById("retorno").setAttribute("style", "");
+}

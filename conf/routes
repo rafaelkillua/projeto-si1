@@ -13,8 +13,8 @@ GET     /cadastro                   controllers.ViewController.cadastro()
 POST    /cadastrar                  controllers.CadastroController.cadastrar()
 
 GET     /agendarCarona              controllers.ViewController.agendarCarona()
-
-GET     /enderecos                  controllers.ViewController.enderecos()
+GET     /oferecerCarona             controllers.ViewController.oferecerCarona()
+POST    /criarCarona                controllers.CaronaController.criarCarona()
 
 GET     /solicitacoes               controllers.ViewController.solicitacoes()
 
