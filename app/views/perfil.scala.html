@@ -1,6 +1,7 @@
-@(usuario: Usuario)
+@import models.formularios.FormularioPerfil
+@(usuario: Usuario)(formPerfil: play.data.Form[FormularioPerfil])
 
-@index("Perfil")(usuario) {
+@index("CaronaUFCG - Perfil")(usuario) {
     <div class="container">
         @helper.form(routes.PerfilController.atualizarPerfil(), 'class -> "form-horizontal") {
             <fieldset>
@@ -17,14 +18,14 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="email">Nome completo:</label>
+                    <label class="col-md-4 control-label" for="nome">Nome: </label>
                     <div class="col-md-4">
-                        <input id="email" name="email" type="text" value="@usuario.getNome()" class="form-control input-md" required="">
+                        <input id="nome" name="nome" type="text" value="@usuario.getNome()" class="form-control input-md" required="">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="matricula">Matrícula:</label>
+                    <label class="col-md-4 control-label" for="matricula">Matrícula: </label>
                     <div class="col-md-4">
                         <input id="matricula" name="matricula" type="text" value="@usuario.getMatricula()" class="form-control input-md" required="">
 
@@ -50,9 +51,9 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="qtde">Quantidade de <br> vagas:</label>
+                    <label class="col-md-4 control-label" for="quantidadeDeVagas">Quantidade de <br> vagas:</label>
                     <div class="col-md-4">
-                        <input id="qtde" name="qtde" type="number" value="@usuario.getQuantidadeDeVagas().toString()" class="form-control input-md">
+                        <input id="quantidadeDeVagas" name="quantidadeDeVagas" type="number" value="@usuario.getQuantidadeDeVagas()" class="form-control input-md" required="" max="6" min="0">
                     </div>
                 </div>
 
@@ -61,7 +62,6 @@
                     <div class="col-md-8">
                         <button id="atualizar" name="atualizar" class="btn btn-success" type="submit">Atualizar</button>
                         <button id="limpar" name="limpar" class="btn btn-primary" type="reset">Resetar</button>
-                        <a href="enderecos" id="endereco" name="endereco" class="btn btn-default" role="button">Alterar Endereço</a>
                     </div>
                 </div>
             </fieldset>

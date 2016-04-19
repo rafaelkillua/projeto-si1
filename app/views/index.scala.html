@@ -4,7 +4,7 @@
         <div id = "mainDiv" class="container">
             <div id="perfil-box">
 
-                <img src="@routes.Assets.versioned("/images/banner.jpg")" alt="">
+                <img src="@routes.Assets.versioned("/images/banner2.jpg")" alt="">
                 <div id="perfil-box-nome">@usuario.getNome()</div>
                 <div id="perfil-box-matricula">Matricula: @usuario.getMatricula()</div>
                 <div id="perfil-box-foto"><img src="@routes.Assets.versioned("/images/fofao.jpg")" width="150" height="150"></div>
@@ -25,12 +25,12 @@
                         <div>
                             <ul class="nav navbar-nav">
                                 <li class="navbarButton"><a href="/">Home</a></li>
-                                <li class="navbarButton"><a href="perfil">Atualizar Perfil</a></li>
+                                <li class="navbarButton"><a href="perfil">Meu Perfil</a></li>
                                 <li class="navbarButton"><a href="enderecos">Meu Endereço</a></li>
                                 <li class="navbarButton"><a href="agendarCarona">
                                     Ofertas de Carona <span class="badge">3</span></a></li>
                                 <li class="navbarButton"><a href="solicitacoes">
-                                    Solicitações Recebidas <span class="badge">3</span></a></li>
+                                    Solicitações Recebidas <span class="badge">@usuario.getSolicitacoesRecebidas().size()</span></a></li>
                                 <li class="navbarButton"><a href="@routes.LoginController.deslogar()" type="button">
                                     Deslogar</a></li>
                             </ul>

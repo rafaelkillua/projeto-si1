@@ -13,7 +13,6 @@ public class CadastroController extends Controller {
         Form<FormularioCadastro> formularioCadastro = Application.getInstance().getFormCadastro().bindFromRequest();
         if (!formularioCadastro.hasErrors()) {
             FormularioCadastro cadastro = formularioCadastro.get();
-            Logger.info(cadastro.email + " " + cadastro.senha + " " + cadastro.quantidadeDeVagas);
             Usuario usuario = new Usuario(cadastro.nome,
                     cadastro.email,
                     cadastro.matricula,
@@ -25,7 +24,7 @@ public class CadastroController extends Controller {
             Application.getInstance().cadastrarUsuario(usuario);
             return redirect("/");
         } else {
-            Logger.error("Não deu");
+            Logger.error("Erro no Cadastro");
             return redirect("/");
         }
     }

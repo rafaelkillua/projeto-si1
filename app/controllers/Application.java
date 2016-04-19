@@ -1,9 +1,7 @@
 package controllers;
 
 import models.CatalogoCaronas;
-import models.formularios.FormularioCadastro;
-import models.formularios.FormularioCarona;
-import models.formularios.FormularioLogin;
+import models.formularios.*;
 import models.Usuario;
 import play.Logger;
 import play.data.Form;
@@ -17,6 +15,7 @@ public class Application extends Controller {
     private final Form<FormularioLogin> formLogin = play.data.Form.form(FormularioLogin.class);
     private final Form<FormularioCadastro> formCadastro = play.data.Form.form(FormularioCadastro.class);
     private final Form<FormularioCarona> formCarona = play.data.Form.form(FormularioCarona.class);
+    private final Form<FormularioPerfil> formPerfil = play.data.Form.form(FormularioPerfil.class);
 
     private List<Usuario> usuariosCadastrados = new ArrayList<>();
 
@@ -47,13 +46,17 @@ public class Application extends Controller {
         return formCarona;
     }
 
+    public Form<FormularioPerfil> getFormPerfil() {
+        return formPerfil;
+    }
+
     public Usuario getUsuarioLogado() throws Exception {
         return pesquisarUsuario(session("logado"));
     }
 
     public void cadastrarUsuario(Usuario usuario) {
         usuariosCadastrados.add(usuario);
-        Logger.info("Cadastrou " + usuario.getEmail() + usuario.getSenha());
+        Logger.info(usuario.getEmail() + " cadastrado.");
     }
 
     public Usuario pesquisarUsuario(String email) throws Exception {

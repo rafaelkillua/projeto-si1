@@ -45,7 +45,7 @@ public class ViewController extends Controller {
     public Result perfil() throws Exception {
         try {
             Application.getInstance().getUsuarioLogado();
-            return ok(perfil.render(Application.getInstance().getUsuarioLogado()));
+            return ok(perfil.render(Application.getInstance().getUsuarioLogado(), Application.getInstance().getFormPerfil()));
         } catch (Exception e) {
             return redirect("/");
         }

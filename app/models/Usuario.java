@@ -21,6 +21,7 @@ public class Usuario {
         setTelefone(telefone);
         setSenha(senha);
         setEndereco(rua, bairro);
+        setQuantidadeDeVagas(quantidadeDeVagas);
     }
 
     public String getNome() {
@@ -61,6 +62,10 @@ public class Usuario {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
     }
 
     public void setEndereco(String rua, String bairro) {
