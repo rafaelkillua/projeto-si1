@@ -1,0 +1,30 @@
+@(usuario: Usuario)
+@import java.math.BigInteger; var i=1; var k=1
+@index("CaronaUFCG - Pesquisa")(usuario) {
+
+  <div class="container">
+
+    <legend align="center">Resultados encontrados: @usuario.getPesquisasDoUsuario.size()</legend>
+
+
+    <div id="content" class="row">
+    @for( carona <- usuario.getPesquisasDoUsuario){
+      <div class="col-sm-4">
+        <ul><img src="@routes.Assets.versioned("/images/ronaldinho.jpg")" class="img-circle" alt="Passageiro 1" width="136" height="136"> </ul>
+        <ul>Motorista: @carona.getEmailMotorista</ul>
+        <ul>Bairro: @carona.getRota.getDestino.getBairro()</ul>
+        <ul>Horário de partida: @carona.getHora()</ul>
+        <ul>Vagas disponíveis: @carona.getVagasDisponiveis()</ul>
+        <ul>
+          <button id="solicitarCarona" name = "solicitarCarona" class ="btn btn-success btn-xs" onclick="">
+                            Solicitar carona</button>
+          <button id="recusarOfertaCarona" name = "recusarOfertaCarona" class ="btn btn-danger btn-xs" onclick="">
+                            Ignorar</button>
+        </ul>
+      </div>
+    }
+    </div>
+  </div>
+
+
+}

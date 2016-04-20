@@ -2,6 +2,7 @@ package controllers;
 
 import models.Carona;
 import models.Endereco;
+import models.Usuario;
 import models.formularios.FormularioCarona;
 import models.formularios.FormularioPesquisa;
 import play.Logger;
@@ -21,11 +22,10 @@ public class CaronaController extends Controller {
 
 
     public Result criarCarona() {
-        Logger.info("CLICOU");
+
         Form<FormularioCarona> formularioCarona = Application.getInstance().getFormCarona().bindFromRequest();
         if (!formularioCarona.hasErrors()) {
             FormularioCarona formCarona = formularioCarona.get();
-            Logger.info(formCarona.toString());
             if (formCarona.tipo.equals("ida")) {
                 try {
                     Application.getCatalogoCaronas().adicionarCaronas(criarCaronaIda(formCarona));
@@ -57,18 +57,29 @@ public class CaronaController extends Controller {
     }
 
     public Result pesquisaCarona(){
-        List<Carona> resultadoPesquisa = new ArrayList<>();
-        Form<FormularioPesquisa> formularioPesquisa = Application.getInstance().getFormPesquisa().bindFromRequest();
-        if(!formularioPesquisa.hasErrors()){
-            FormularioPesquisa formPesquisa =  formularioPesquisa.get();
-            Logger.info(formPesquisa.toString());
-            resultadoPesquisa = Application.getCatalogoCaronas().pesquisaCaronas(formPesquisa.hora, formPesquisa.bairro);
 
-        } else {
-            Logger.error("ERRO AO PESQUISAR");
+        List<Carona> resultadoPesquisa = new ArrayList<>();
+
+        Form<FormularioPesquisa> formularioPesquisa = Application.getInstance().getFormPesquisa().bindFromRequest();
+
+        try {
+            Usuario usuario = Application.getInstance().getUsuarioLogado();
+
+            if(!formularioPesquisa.hasErrors()){
+
+                FormularioPesquisa formPesquisa =  formularioPesquisa.get();
+                resultadoPesquisa = Application.getCatalogoCaronas().pesquisaCaronas(formPesquisa.hora, formPesquisa.bairro);
+
+                usuario.setPesquisasDoUsuario(resultadoPesquisa);
+
+            } else {
+                Logger.error("ERRO AO PESQUISAR");
+            }
+        } catch (Exception e) {
+            Logger.error(e.getMessage());
         }
 
-       return redirect("/");
+        return redirect("/resultadoPesquisa");
     }
     private Carona criarCaronaIda(FormularioCarona formCarona) throws Exception {
         return new Carona(formCarona.horaPartida,

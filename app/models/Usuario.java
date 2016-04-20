@@ -13,6 +13,8 @@ public class Usuario {
     private int quantidadeDeVagas;
     private List<Integer> solicitacoesEnviadas = new ArrayList<>();
     private List<Integer> solicitacoesRecebidas = new ArrayList<>();
+    private List<Carona> pesquisasDoUsuario = new ArrayList<>();
+
 
     public Usuario(String nome, String email, String matricula, String telefone, String senha, String rua, String bairro, int quantidadeDeVagas){
         setNome(nome);
@@ -87,6 +89,15 @@ public class Usuario {
     public List<Integer> getSolicitacoesRecebidas() {
         return solicitacoesRecebidas;
     }
+
+    public List<Carona> getPesquisasDoUsuario() {
+        return pesquisasDoUsuario;
+    }
+
+    public void setPesquisasDoUsuario(List<Carona> pesquisasDoUsuario) {
+        this.pesquisasDoUsuario = pesquisasDoUsuario;
+    }
+
 
     public void validaSenha(String senha) throws Exception {
         if (!getSenha().equals(senha)) {

@@ -86,4 +86,13 @@ public class ViewController extends Controller {
             return redirect("/");
         }
     }
+
+    public Result resultadoPesquisa(){
+        try{
+            Application.getInstance().getUsuarioLogado();
+            return ok(resultadoPesquisa.render(Application.getInstance().getUsuarioLogado()));
+        }catch (Exception e){
+            return redirect("/");
+        }
+    }
 }
