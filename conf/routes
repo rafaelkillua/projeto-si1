@@ -16,6 +16,9 @@ GET     /agendarCarona              controllers.ViewController.agendarCarona()
 GET     /oferecerCarona             controllers.ViewController.oferecerCarona()
 POST    /criarCarona                controllers.CaronaController.criarCarona()
 
+GET     /pesquisarCarona            controllers.ViewController.pesquisarCarona()
+POST    /pesquisaCarona             controllers.CaronaController.pesquisaCarona()
+
 GET     /solicitacoes               controllers.ViewController.solicitacoes()
 
 GET     /perfil                     controllers.ViewController.perfil()

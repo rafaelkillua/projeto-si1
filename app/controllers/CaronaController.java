@@ -3,10 +3,14 @@ package controllers;
 import models.Carona;
 import models.Endereco;
 import models.formularios.FormularioCarona;
+import models.formularios.FormularioPesquisa;
 import play.Logger;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Rafael on 18/04/2016.
@@ -14,6 +18,7 @@ import play.mvc.Result;
 public class CaronaController extends Controller {
 
     private final Endereco UFCG = new Endereco("UFCG", "Bodocongó");
+
 
     public Result criarCarona() {
         Logger.info("CLICOU");
@@ -51,6 +56,20 @@ public class CaronaController extends Controller {
         }
     }
 
+    public Result pesquisaCarona(){
+        List<Carona> resultadoPesquisa = new ArrayList<>();
+        Form<FormularioPesquisa> formularioPesquisa = Application.getInstance().getFormPesquisa().bindFromRequest();
+        if(!formularioPesquisa.hasErrors()){
+            FormularioPesquisa formPesquisa =  formularioPesquisa.get();
+            Logger.info(formPesquisa.toString());
+            resultadoPesquisa = Application.getCatalogoCaronas().pesquisaCaronas(formPesquisa.hora, formPesquisa.bairro);
+
+        } else {
+            Logger.error("ERRO AO PESQUISAR");
+        }
+
+       return redirect("/");
+    }
     private Carona criarCaronaIda(FormularioCarona formCarona) throws Exception {
         return new Carona(formCarona.horaPartida,
                 new Endereco(formCarona.ruaPartida, formCarona.bairroPartida),

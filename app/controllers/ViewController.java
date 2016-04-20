@@ -77,4 +77,13 @@ public class ViewController extends Controller {
             return redirect("/");
         }
     }
+
+    public Result pesquisarCarona() {
+        try{
+            Application.getInstance().getUsuarioLogado();
+            return ok(pesquisarCarona.render(Application.getInstance().getUsuarioLogado(), Application.getInstance().getFormPesquisa()));
+        } catch (Exception e) {
+            return redirect("/");
+        }
+    }
 }

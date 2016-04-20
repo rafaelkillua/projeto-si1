@@ -16,6 +16,7 @@ public class Application extends Controller {
     private final Form<FormularioCadastro> formCadastro = play.data.Form.form(FormularioCadastro.class);
     private final Form<FormularioCarona> formCarona = play.data.Form.form(FormularioCarona.class);
     private final Form<FormularioPerfil> formPerfil = play.data.Form.form(FormularioPerfil.class);
+    private final Form<FormularioPesquisa> formPesquisa = play.data.Form.form(FormularioPesquisa.class);
 
     private List<Usuario> usuariosCadastrados = new ArrayList<>();
 
@@ -48,6 +49,10 @@ public class Application extends Controller {
 
     public Form<FormularioPerfil> getFormPerfil() {
         return formPerfil;
+    }
+
+    public Form<FormularioPesquisa> getFormPesquisa() {
+        return formPesquisa;
     }
 
     public Usuario getUsuarioLogado() throws Exception {

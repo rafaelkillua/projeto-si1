@@ -1,0 +1,41 @@
+@import models.formularios.FormularioPesquisa
+@(usuario: Usuario)(form: play.data.Form[FormularioPesquisa])
+
+@index("CaronaUFCG - Pesquisar Carona")(usuario) {
+  <div class="container">
+    <legend align="center">Pesquisar Caronas</legend>
+    @helper.form(routes.CaronaController.pesquisaCarona(), 'class -> "form-horizontal") {
+        <fieldset>
+
+
+          <div id="pesquisa">
+
+              <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="hora">Hora de partida:</label>
+              <div class="col-md-4">
+                <input id="hora" name="hora" type="text" value="" class="form-control input-md" required="">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="bairro">Bairro:</label>
+              <div class="col-md-4">
+                <input id="bairro" name="bairro" type="text" value="@usuario.getEndereco().getBairro()" class="form-control input-md" required="">
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="pesquisar"></label>
+              <div class="col-md-8">
+                <button id="pesquisar" name="pesquisar" class="btn btn-success" type="submit">Pequisar Carona</button>
+                <button id="limpar" name="limpar" class="btn btn-primary" type="reset">Limpar Campos</button>
+              </div>
+            </div>
+
+          </div>
+        </fieldset>
+      </div>
+  }
+}

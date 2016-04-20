@@ -23,17 +23,17 @@ public class CatalogoCaronas {
                 " criada por " + carona.getEmailMotorista());
     }
 
-    public List<Carona> pesquisaCaronas(String hora, String rua, String bairro){
+    public List<Carona> pesquisaCaronas(String hora, String bairro){
 
         List<Carona> resultadoPesquisa = new ArrayList<>();
 
         for (Carona carona: catalogoCaronas) {
 
-            if((carona.getRota().getDestino().getRua().equals(rua)) && (carona.getRota().getDestino().getBairro().equals(bairro))) {
+            if(carona.getHora().equals(hora) && (carona.getRota().getDestino().getBairro().equals(bairro))) {
                 resultadoPesquisa.add(carona);
             }
         }
-
+        Logger.info("Pesquisa feita para Hora: "+ hora + " E" + " Bairro: " + bairro);
         return resultadoPesquisa;
 
     }
