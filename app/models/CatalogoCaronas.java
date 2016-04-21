@@ -18,8 +18,8 @@ public class CatalogoCaronas {
 
     public void adicionarCaronas(Carona carona){
         catalogoCaronas.add(carona);
-        Logger.info("Carona criada indo de " + carona.getRota().getPartida().getBairro() +
-                " para " + carona.getRota().getDestino().getBairro() +
+        Logger.info("Carona criada indo de " + carona.getRota().getEnderecoPartida().getBairro() +
+                " para " + carona.getRota().getEnderecoDestino().getBairro() +
                 " criada por " + carona.getEmailMotorista());
     }
 
@@ -29,7 +29,7 @@ public class CatalogoCaronas {
 
         for (Carona carona: catalogoCaronas) {
 
-            if(carona.getHora().equals(hora) && (carona.getRota().getDestino().getBairro().equals(bairro))) {
+            if(carona.getHora().equals(hora) && (carona.getRota().getEnderecoDestino().getBairro().equals(bairro))) {
                 resultadoPesquisa.add(carona);
             }
         }

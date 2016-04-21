@@ -5,29 +5,27 @@ package models;
  */
 public class Rota {
 
-    private Endereco partida;
-    private Endereco destino;
+    private Endereco enderecoPartida;
+    private Endereco enderecoDestino;
 
-    public Rota(Endereco partida, Endereco destino) {
-
-        this.partida = partida;
-        this.destino = destino;
-
+    public Rota(Endereco enderecoPartida, Endereco enderecoDestino) {
+        this.enderecoPartida = enderecoPartida;
+        this.enderecoDestino = enderecoDestino;
     }
 
-    public Endereco getPartida() {
-        return partida;
+    public Endereco getEnderecoPartida() {
+        return enderecoPartida;
     }
 
-    public void setPartida(Endereco partida) {
-        this.partida = partida;
+    public void setEnderecoPartida(Endereco enderecoPartida) {
+        this.enderecoPartida = enderecoPartida;
     }
 
-    public Endereco getDestino() {
-        return destino;
+    public Endereco getEnderecoDestino() {
+        return enderecoDestino;
     }
 
-    public void setDestino(Endereco destino) {
-        this.destino = destino;
+    public void setEnderecoDestino(Endereco enderecoDestino) {
+        this.enderecoDestino = enderecoDestino;
     }
 }

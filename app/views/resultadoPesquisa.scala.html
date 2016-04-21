@@ -12,8 +12,8 @@
       <div class="col-sm-4">
         <ul><img src="@routes.Assets.versioned("/images/ronaldinho.jpg")" class="img-circle" alt="Passageiro 1" width="136" height="136"> </ul>
         <ul>Motorista: @carona.getEmailMotorista</ul>
-        <ul>Bairro: @carona.getRota.getDestino.getBairro()</ul>
-        <ul>Horário de partida: @carona.getHora()</ul>
+        <ul>Bairro: @carona.getRota.getEnderecoDestino.getBairro()</ul>
+        <ul>Horário de enderecoPartida: @carona.getHora()</ul>
         <ul>Vagas disponíveis: @carona.getVagasDisponiveis()</ul>
         <ul>
           <button id="solicitarCarona" name = "solicitarCarona" class ="btn btn-success btn-xs" onclick="">
