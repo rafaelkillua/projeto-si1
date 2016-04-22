@@ -11,12 +11,15 @@ public class Usuario {
     private String senha;
     private Endereco endereco;
     private int quantidadeDeVagas;
-    private List<Integer> solicitacoesEnviadas = new ArrayList<>();
-    private List<Integer> solicitacoesRecebidas = new ArrayList<>();
-    private List<Carona> pesquisasDoUsuario = new ArrayList<>();
+    private List<Integer> solicitacoesEnviadas;
+    private List<Integer> solicitacoesRecebidas;
+    private List<Carona> pesquisasDoUsuario;
 
 
     public Usuario(String nome, String email, String matricula, String telefone, String senha, String rua, String bairro, int quantidadeDeVagas){
+        solicitacoesEnviadas = new ArrayList<>();
+        solicitacoesRecebidas = new ArrayList<>();
+        pesquisasDoUsuario = new ArrayList<>();
         setNome(nome);
         setEmail(email);
         setMatricula(matricula);

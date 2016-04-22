@@ -85,7 +85,7 @@ public class CaronaController extends Controller {
         return new Carona(formCarona.horaPartida,
                 new Endereco(formCarona.ruaPartida, formCarona.bairroPartida),
                 UFCG,
-                Application.getInstance().getUsuarioLogado().getEmail(),
+                Application.getInstance().getUsuarioLogado(),
                 formCarona.vagas);
     }
 
@@ -93,7 +93,7 @@ public class CaronaController extends Controller {
         return new Carona(formCarona.horaRetorno,
                 UFCG,
                 new Endereco(formCarona.ruaRetorno, formCarona.bairroRetorno),
-                Application.getInstance().getUsuarioLogado().getEmail(),
+                Application.getInstance().getUsuarioLogado(),
                 formCarona.vagas);
     }
 }

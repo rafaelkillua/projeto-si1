@@ -11,14 +11,14 @@ public class Carona {
     private String hora;
     private Rota rota;
     private int vagasDisponiveis;
-    private String emailMotorista;
+    private Usuario motorista;
     private List<String> emailPassageiros;
 
-    public Carona(String hora, Endereco partida, Endereco destino, String emailMotorista, int vagasDisponiveis) {
+    public Carona(String hora, Endereco partida, Endereco destino, Usuario motorista, int vagasDisponiveis) {
 
         this.hora = hora;
         rota = new Rota(partida, destino);
-        this.emailMotorista = emailMotorista;
+        this.motorista = motorista;
         emailPassageiros = new ArrayList<>();
         this.vagasDisponiveis = vagasDisponiveis;
     }
@@ -47,12 +47,12 @@ public class Carona {
         this.vagasDisponiveis = vagasDisponiveis;
     }
 
-    public String getEmailMotorista() {
-        return emailMotorista;
+    public Usuario getMotorista() {
+        return motorista;
     }
 
-    public void setEmailMotorista(String emailMotorista) {
-        this.emailMotorista = emailMotorista;
+    public void setMotorista(Usuario novoMotorista) {
+        this.motorista = novoMotorista;
     }
 
     public List<String> getEmailPassageiros() {
