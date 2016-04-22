@@ -18,9 +18,6 @@ public class CatalogoCaronas {
 
     public void adicionarCaronas(Carona carona){
         catalogoCaronas.add(carona);
-        Logger.info("Carona criada indo de " + carona.getRota().getEnderecoPartida().getBairro() +
-                " para " + carona.getRota().getEnderecoDestino().getBairro() +
-                " criada por " + carona.getMotorista().getNome());
     }
 
     public List<Carona> pesquisaCaronas(String hora, String bairro){
@@ -29,11 +26,10 @@ public class CatalogoCaronas {
 
         for (Carona carona: catalogoCaronas) {
 
-            if(carona.getHora().equals(hora) || (carona.getRota().getEnderecoPartida().getBairro().equals(bairro))) {
+            if((carona.getVagasDisponiveis() > 0)  && (carona.getHora().equals(hora) || (carona.getRota().getEnderecoPartida().getBairro().equalsIgnoreCase(bairro)))) {
                 resultadoPesquisa.add(carona);
             }
         }
-        Logger.info("Pesquisa feita para Hora: "+ hora + " E" + " Bairro: " + bairro);
         return resultadoPesquisa;
 
     }

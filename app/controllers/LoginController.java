@@ -14,7 +14,7 @@ public class LoginController extends Controller {
             Usuario usuario = Application.getInstance().pesquisarUsuario(login.email);
             usuario.validaSenha(login.senha);
             session("logado", usuario.getEmail());
-            Logger.info("Logou " + usuario.getEmail());
+            Logger.info("Usuario " + usuario.getEmail() + "logou");
         } catch (Exception e) {
             Logger.error(e.getMessage());
         }
@@ -24,6 +24,7 @@ public class LoginController extends Controller {
     public Result deslogar() {
         session().clear();
         return redirect("/");
+
     }
 
 }

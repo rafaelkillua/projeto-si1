@@ -29,29 +29,32 @@ public class CaronaController extends Controller {
             if (formCarona.tipo.equals("ida")) {
                 try {
                     Application.getCatalogoCaronas().adicionarCaronas(criarCaronaIda(formCarona));
+                    Logger.info("Carona de Ida criada pelo usuario " + Application.getInstance().getUsuarioLogado().getEmail());
                 } catch (Exception e) {
-                    Logger.error(e.getMessage());
+                    Logger.error("Excecao ao criar carona de Ida", e.getMessage());
                 }
             } else if (formCarona.tipo.equals("volta")) {
                 try {
                     Application.getCatalogoCaronas().adicionarCaronas(criarCaronaVolta(formCarona));
+                    Logger.info("Carona de Volta criada pelo usuario " + Application.getInstance().getUsuarioLogado().getEmail());
                 } catch (Exception e) {
-                    Logger.error(e.getMessage());
+                    Logger.error("Excecao ao criar carona de Volta", e.getMessage());
                 }
             } else if (formCarona.tipo.equals("idaVolta")) {
                 try {
                     Application.getCatalogoCaronas().adicionarCaronas(criarCaronaIda(formCarona));
                     Application.getCatalogoCaronas().adicionarCaronas(criarCaronaVolta(formCarona));
+                    Logger.info("Carona de IdaVolta criada pelo usuario " + Application.getInstance().getUsuarioLogado().getEmail());
                 } catch (Exception e) {
-                    Logger.error(e.getMessage());
+                    Logger.error("Excecao ao criar carona de IdaVolta", e.getMessage());
                 }
             } else {
-                Logger.error("WTF ACONTECEU - BUG ESCROTO");
+                Logger.error("Erro no tipo de carona no formulario de criar carona");
             }
 
             return redirect("/");
         } else {
-            Logger.error("Erro de formulário de carona");
+            Logger.error("Erro no formulario de criar carona");
             return redirect("/");
         }
     }
@@ -71,12 +74,13 @@ public class CaronaController extends Controller {
                 resultadoPesquisa = Application.getCatalogoCaronas().pesquisaCaronas(formPesquisa.hora, formPesquisa.bairro);
 
                 usuario.setPesquisasDoUsuario(resultadoPesquisa);
+                Logger.info("Pesquisa de carona feita pelo usuario " + usuario.getEmail());
 
             } else {
-                Logger.error("ERRO AO PESQUISAR");
+                Logger.error("Erro no formulario de pesquisar carona");
             }
         } catch (Exception e) {
-            Logger.error(e.getMessage());
+            Logger.error("Excecao ao Pesquisar Carona", e.getMessage());
         }
 
         return redirect("/resultadoPesquisa");
