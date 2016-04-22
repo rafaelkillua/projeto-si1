@@ -5,6 +5,8 @@ package models.formularios;
  */
 public class FormularioPesquisa {
 
+    public String tipo;
     public String hora;
-    public String bairro;
+    public String bairroPartida;
+    public String bairroRetorno;
 }

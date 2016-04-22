@@ -1,41 +1,61 @@
 @import models.formularios.FormularioPesquisa
-@(usuario: Usuario)(form: play.data.Form[FormularioPesquisa])
+@(usuario: Usuario)(formPesquisa: play.data.Form[FormularioPesquisa])
 
 @index("CaronaUFCG - Pesquisar Carona")(usuario) {
   <div class="container">
     <legend align="center">Pesquisar Caronas</legend>
     @helper.form(routes.CaronaController.pesquisaCarona(), 'class -> "form-horizontal") {
-        <fieldset>
+      <fieldset>
 
-
-          <div id="pesquisa">
-
-              <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="hora">Hora de Partida:</label>
-              <div class="col-md-4">
-                <input id="hora" name="hora" type="text" value="" class="form-control input-md" required="">
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="bairro">Bairro:</label>
-              <div class="col-md-4">
-                <input id="bairro" name="bairro" type="text" value="@usuario.getEndereco().getBairro()" class="form-control input-md" required="">
-              </div>
-            </div>
-
-
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="pesquisar"></label>
-              <div class="col-md-8">
-                <button id="pesquisar" name="pesquisar" class="btn btn-success" type="submit">Pequisar Carona</button>
-                <button id="limpar" name="limpar" class="btn btn-primary" type="reset">Limpar Campos</button>
-              </div>
-            </div>
-
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="tipo">Tipo:</label>
+          <div class="col-md-4">
+            <input type="radio" name="tipo" value="ida" checked onclick="caronaIda()"> Ida para UFCG
+            <input type="radio" name="tipo" value="volta" onclick="caronaVolta()"> Volta da UFCG
           </div>
-        </fieldset>
-      </div>
-  }
+        </div>
+
+        <div id="partida">
+
+          <legend align="center">Partida</legend>
+            <!-- Text input-->
+
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="bairro">Bairro de partida:</label>
+            <div class="col-md-4">
+              <input id="bairroPartida" name="bairroPartida" type="text" value="@usuario.getEndereco().getBairro()" class="form-control input-md" required="">
+            </div>
+          </div>
+        </div>
+
+        <div id="retorno" style="display : none">
+
+          <legend align="center">Retorno</legend>
+            <!-- Text input-->
+
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="bairro">Bairro de destino:</label>
+            <div class="col-md-4">
+              <input id="bairroRetorno" name="bairroRetorno" type="text" value="@usuario.getEndereco().getBairro()" class="form-control input-md" required="">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="hora">Hora de Partida:</label>
+          <div class="col-md-4">
+            <input id="hora" name="hora" type="text" value="" class="form-control input-md" required="">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="pesquisar"></label>
+          <div class="col-md-8">
+            <button id="pesquisar" name="pesquisar" class="btn btn-success" type="submit">Pequisar Carona</button>
+            <button id="limpar" name="limpar" class="btn btn-primary" type="reset">Limpar Campos</button>
+          </div>
+        </div>
+      </fieldset>
+    }
+  </div>
 }

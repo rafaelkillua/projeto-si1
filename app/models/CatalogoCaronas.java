@@ -20,18 +20,34 @@ public class CatalogoCaronas {
         catalogoCaronas.add(carona);
     }
 
-    public List<Carona> pesquisaCaronas(String hora, String bairro){
+    public List<Carona> pesquisaCaronas(String hora, String bairro, String tipo){
 
         List<Carona> resultadoPesquisa = new ArrayList<>();
 
-        for (Carona carona: catalogoCaronas) {
-
-            if((carona.getVagasDisponiveis() > 0)  && (carona.getHora().equals(hora) || (carona.getRota().getEnderecoPartida().getBairro().equalsIgnoreCase(bairro)))) {
-                resultadoPesquisa.add(carona);
-            }
+        if (tipo.equals("ida")) {
+            resultadoPesquisa = pesquisaCaronasIda(resultadoPesquisa, hora, bairro);
+        } else if (tipo.equals("volta")) {
+            resultadoPesquisa = pesquisaCaronasVolta(resultadoPesquisa, hora, bairro);
         }
         return resultadoPesquisa;
+    }
 
+    private List<Carona> pesquisaCaronasIda(List<Carona> caronas, String hora, String bairro) {
+        for (Carona carona: catalogoCaronas) {
+            if(carona.getTipoCarona() == TipoCarona.IDA && carona.getHora().equals(hora) && (carona.getRota().getEnderecoPartida().getBairro().equals(bairro))) {
+                caronas.add(carona);
+            }
+        }
+        return caronas;
+    }
+
+    private List<Carona> pesquisaCaronasVolta(List<Carona> caronas, String hora, String bairro) {
+        for (Carona carona: catalogoCaronas) {
+            if(carona.getTipoCarona() == TipoCarona.VOLTA && carona.getHora().equals(hora) && (carona.getRota().getEnderecoDestino().getBairro().equals(bairro))) {
+                caronas.add(carona);
+            }
+        }
+        return caronas;
     }
 
     public int quantidadeDeCaronas() {

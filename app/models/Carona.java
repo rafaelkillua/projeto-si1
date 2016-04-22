@@ -13,14 +13,19 @@ public class Carona {
     private int vagasDisponiveis;
     private Usuario motorista;
     private List<String> emailPassageiros;
+    private TipoCarona tipo;
 
-    public Carona(String hora, Endereco partida, Endereco destino, Usuario motorista, int vagasDisponiveis) {
-
+    public Carona(String hora, Endereco partida, Endereco destino, Usuario motorista, int vagasDisponiveis, TipoCarona tipo) {
         this.hora = hora;
         rota = new Rota(partida, destino);
         this.motorista = motorista;
         emailPassageiros = new ArrayList<>();
         this.vagasDisponiveis = vagasDisponiveis;
+        this.tipo = tipo;
+    }
+
+    public TipoCarona getTipoCarona() {
+        return this.tipo;
     }
 
     public String getHora() {
@@ -65,7 +70,7 @@ public class Carona {
 
     public void adicionarPassageiro(String passageiro){
 
-            emailPassageiros.add(passageiro);
+        emailPassageiros.add(passageiro);
     }
 
     public void removerPassageiro(String passageiro){

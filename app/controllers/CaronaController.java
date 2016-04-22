@@ -2,6 +2,7 @@ package controllers;
 
 import models.Carona;
 import models.Endereco;
+import models.TipoCarona;
 import models.Usuario;
 import models.formularios.FormularioCarona;
 import models.formularios.FormularioPesquisa;
@@ -29,14 +30,12 @@ public class CaronaController extends Controller {
             if (formCarona.tipo.equals("ida")) {
                 try {
                     Application.getCatalogoCaronas().adicionarCaronas(criarCaronaIda(formCarona));
-                    Logger.info("Carona de Ida criada pelo usuario " + Application.getInstance().getUsuarioLogado().getEmail());
                 } catch (Exception e) {
                     Logger.error("Excecao ao criar carona de Ida", e.getMessage());
                 }
             } else if (formCarona.tipo.equals("volta")) {
                 try {
                     Application.getCatalogoCaronas().adicionarCaronas(criarCaronaVolta(formCarona));
-                    Logger.info("Carona de Volta criada pelo usuario " + Application.getInstance().getUsuarioLogado().getEmail());
                 } catch (Exception e) {
                     Logger.error("Excecao ao criar carona de Volta", e.getMessage());
                 }
@@ -44,7 +43,6 @@ public class CaronaController extends Controller {
                 try {
                     Application.getCatalogoCaronas().adicionarCaronas(criarCaronaIda(formCarona));
                     Application.getCatalogoCaronas().adicionarCaronas(criarCaronaVolta(formCarona));
-                    Logger.info("Carona de IdaVolta criada pelo usuario " + Application.getInstance().getUsuarioLogado().getEmail());
                 } catch (Exception e) {
                     Logger.error("Excecao ao criar carona de IdaVolta", e.getMessage());
                 }
@@ -69,12 +67,14 @@ public class CaronaController extends Controller {
             Usuario usuario = Application.getInstance().getUsuarioLogado();
 
             if(!formularioPesquisa.hasErrors()){
-
                 FormularioPesquisa formPesquisa =  formularioPesquisa.get();
-                resultadoPesquisa = Application.getCatalogoCaronas().pesquisaCaronas(formPesquisa.hora, formPesquisa.bairro);
+                if (formPesquisa.tipo.equals("ida")) {
+                    resultadoPesquisa = Application.getCatalogoCaronas().pesquisaCaronas(formPesquisa.hora, formPesquisa.bairroPartida, formPesquisa.tipo);
+                } else if (formPesquisa.tipo.equals("volta")) {
+                    resultadoPesquisa = Application.getCatalogoCaronas().pesquisaCaronas(formPesquisa.hora, formPesquisa.bairroRetorno, formPesquisa.tipo);
+                }
 
                 usuario.setPesquisasDoUsuario(resultadoPesquisa);
-                Logger.info("Pesquisa de carona feita pelo usuario " + usuario.getEmail());
 
             } else {
                 Logger.error("Erro no formulario de pesquisar carona");
@@ -85,12 +85,13 @@ public class CaronaController extends Controller {
 
         return redirect("/resultadoPesquisa");
     }
+
     private Carona criarCaronaIda(FormularioCarona formCarona) throws Exception {
         return new Carona(formCarona.horaPartida,
                 new Endereco(formCarona.ruaPartida, formCarona.bairroPartida),
                 UFCG,
                 Application.getInstance().getUsuarioLogado(),
-                formCarona.vagas);
+                formCarona.vagas, TipoCarona.IDA);
     }
 
     private Carona criarCaronaVolta(FormularioCarona formCarona) throws Exception {
@@ -98,6 +99,6 @@ public class CaronaController extends Controller {
                 UFCG,
                 new Endereco(formCarona.ruaRetorno, formCarona.bairroRetorno),
                 Application.getInstance().getUsuarioLogado(),
-                formCarona.vagas);
+                formCarona.vagas, TipoCarona.VOLTA);
     }
 }
