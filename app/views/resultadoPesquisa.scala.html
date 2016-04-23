@@ -10,9 +10,17 @@
     <div id="content" class="row">
     @for( carona <- usuario.getPesquisasDoUsuario){
       <div class="col-sm-4">
-        <ul><img src="@routes.Assets.versioned("/images/user.png")" class="img-circle" alt="Passageiro 1" width="136" height="136"> </ul>
+        <ul><img src="@routes.Assets.versioned("/images/user.png")" class="img-circle" alt="motorista" width="136" height="136"> </ul>
+        <ul>Tipo de Carona: @carona.getTipoString()</ul>
         <ul>Motorista: @carona.getMotorista().getNome()</ul>
+        <ul>Telefone: @carona.getMotorista().getTelefone</ul>
+        @if(carona.isIda()) {
         <ul>Bairro: @carona.getRota.getEnderecoPartida.getBairro()</ul>
+        <ul>Rua: @carona.getRota.getEnderecoPartida.getRua</ul>
+        } else {
+          <ul>Bairro: @carona.getRota.getEnderecoDestino.getBairro()</ul>
+          <ul>Rua: @carona.getRota.getEnderecoDestino.getRua</ul>
+        }
         <ul>Horário de Partida: @carona.getHora()</ul>
         <ul>Vagas disponíveis: @carona.getVagasDisponiveis()</ul>
         <ul>

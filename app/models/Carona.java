@@ -28,6 +28,26 @@ public class Carona {
         return this.tipo;
     }
 
+    public boolean isIda() {
+        return getTipoCarona() == TipoCarona.IDA;
+    }
+
+    public boolean isVolta() {
+        return getTipoCarona() == TipoCarona.VOLTA;
+    }
+
+    public String getTipoString() {
+        if (isIda()) {
+            return "Ida para UFCG";
+        } else {
+            return "Volta da UFCG";
+        }
+    }
+
+    public boolean temVagaDisponivel() {
+        return getVagasDisponiveis() > 0;
+    }
+
     public String getHora() {
         return hora;
     }
