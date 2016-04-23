@@ -14,7 +14,7 @@ public class LoginController extends Controller {
             Usuario usuario = Application.getInstance().pesquisarUsuario(login.email);
             usuario.validaSenha(login.senha);
             session("logado", usuario.getEmail());
-            Logger.info("Usuario " + usuario.getEmail() + "logou");
+            Logger.info("Usuario " + usuario.getEmail() + " logou");
         } catch (Exception e) {
             Logger.error(e.getMessage());
         }

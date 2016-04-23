@@ -30,12 +30,14 @@ public class CaronaController extends Controller {
             if (formCarona.tipo.equals("ida")) {
                 try {
                     Application.getCatalogoCaronas().adicionarCaronas(criarCaronaIda(formCarona));
+                    Logger.info("Carona do tipo Ida criada");
                 } catch (Exception e) {
                     Logger.error("Excecao ao criar carona de Ida", e.getMessage());
                 }
             } else if (formCarona.tipo.equals("volta")) {
                 try {
                     Application.getCatalogoCaronas().adicionarCaronas(criarCaronaVolta(formCarona));
+                    Logger.info("Carona do tipo Volta criada");
                 } catch (Exception e) {
                     Logger.error("Excecao ao criar carona de Volta", e.getMessage());
                 }
@@ -43,6 +45,7 @@ public class CaronaController extends Controller {
                 try {
                     Application.getCatalogoCaronas().adicionarCaronas(criarCaronaIda(formCarona));
                     Application.getCatalogoCaronas().adicionarCaronas(criarCaronaVolta(formCarona));
+                    Logger.info("Carona do tipo IdaVolta criada");
                 } catch (Exception e) {
                     Logger.error("Excecao ao criar carona de IdaVolta", e.getMessage());
                 }
@@ -75,6 +78,7 @@ public class CaronaController extends Controller {
                 }
 
                 usuario.setPesquisasDoUsuario(resultadoPesquisa);
+                Logger.info("Pesquisa de carona feita pelo usuario " + usuario.getEmail());
 
             } else {
                 Logger.error("Erro no formulario de pesquisar carona");
