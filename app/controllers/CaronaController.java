@@ -12,6 +12,7 @@ import play.mvc.Controller;
 import play.mvc.Result;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -23,21 +24,24 @@ public class CaronaController extends Controller {
 
 
     public Result criarCarona() {
-
+        Calendar horaInicial = Calendar.getInstance();
+        Calendar horaFinal;
         Form<FormularioCarona> formularioCarona = Application.getInstance().getFormCarona().bindFromRequest();
         if (!formularioCarona.hasErrors()) {
             FormularioCarona formCarona = formularioCarona.get();
             if (formCarona.tipo.equals("ida")) {
                 try {
                     Application.getCatalogoCaronas().adicionarCaronas(criarCaronaIda(formCarona));
-                    Logger.info("Carona do tipo Ida criada");
+                    horaFinal = Calendar.getInstance();
+                    Logger.info("Carona do tipo Ida criada em " + (horaFinal.getTimeInMillis() - horaInicial.getTimeInMillis()) + " ms");
                 } catch (Exception e) {
                     Logger.error("Excecao ao criar carona de Ida", e.getMessage());
                 }
             } else if (formCarona.tipo.equals("volta")) {
                 try {
                     Application.getCatalogoCaronas().adicionarCaronas(criarCaronaVolta(formCarona));
-                    Logger.info("Carona do tipo Volta criada");
+                    horaFinal = Calendar.getInstance();
+                    Logger.info("Carona do tipo Volta criada em " + (horaFinal.getTimeInMillis() - horaInicial.getTimeInMillis()) + " ms");
                 } catch (Exception e) {
                     Logger.error("Excecao ao criar carona de Volta", e.getMessage());
                 }
@@ -45,7 +49,8 @@ public class CaronaController extends Controller {
                 try {
                     Application.getCatalogoCaronas().adicionarCaronas(criarCaronaIda(formCarona));
                     Application.getCatalogoCaronas().adicionarCaronas(criarCaronaVolta(formCarona));
-                    Logger.info("Carona do tipo IdaVolta criada");
+                    horaFinal = Calendar.getInstance();
+                    Logger.info("Carona do tipo IdaVolta criada em " + (horaFinal.getTimeInMillis() - horaInicial.getTimeInMillis()) + " ms");
                 } catch (Exception e) {
                     Logger.error("Excecao ao criar carona de IdaVolta", e.getMessage());
                 }
@@ -61,6 +66,8 @@ public class CaronaController extends Controller {
     }
 
     public Result pesquisaCarona(){
+        Calendar horaInicial = Calendar.getInstance();
+        Calendar horaFinal;
 
         List<Carona> resultadoPesquisa = new ArrayList<>();
 
@@ -78,7 +85,8 @@ public class CaronaController extends Controller {
                 }
 
                 usuario.setPesquisasDoUsuario(resultadoPesquisa);
-                Logger.info("Pesquisa de carona feita pelo usuario " + usuario.getEmail());
+                horaFinal = Calendar.getInstance();
+                Logger.info("Pesquisa de carona feita pelo usuario " + usuario.getEmail() + " em " + (horaFinal.getTimeInMillis() - horaInicial.getTimeInMillis()) + " ms");
 
             } else {
                 Logger.error("Erro no formulario de pesquisar carona");

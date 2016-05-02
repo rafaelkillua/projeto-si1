@@ -24,7 +24,7 @@ public class Application extends Controller {
     private static CatalogoCaronas catalogoCaronas = new CatalogoCaronas();
 
     private Application() {
-        
+
     }
 
     public static Application getInstance() {
@@ -61,11 +61,9 @@ public class Application extends Controller {
 
     public void cadastrarUsuario(Usuario usuario) {
         usuariosCadastrados.add(usuario);
-        Logger.info(usuario.getEmail() + " cadastrado.");
     }
 
     public Usuario pesquisarUsuario(String email) throws Exception {
-
         for (Usuario user : usuariosCadastrados) {
             if (user.getEmail().equalsIgnoreCase(email)) {
                 return user;

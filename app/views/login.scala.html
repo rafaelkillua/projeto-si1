@@ -30,5 +30,19 @@
             </div>
         </div>
     }
+        @if(flash.contains("error")) {
+            <div class="col-md-4"></div>
+            <div class="col-md-4 alert alert-danger">
+                @flash.get("error")
+            </div>
+            <div class="col-md-4"></div>
+        }
+        @if(flash.contains("success")) {
+            <div class="col-md-4"></div>
+            <div class="col-md-4 alert alert-success">
+                @flash.get("success")
+            </div>
+            <div class="col-md-4"></div>
+        }
     </div>
 }
