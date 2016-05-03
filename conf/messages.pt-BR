@@ -2,8 +2,6 @@ title = CaronaUFCG
 welcome.login = Bem vindo ao CaronaUFCG. Faça seu login
 welcome.index = Bem vindo ao CaronaUFCG
 
-title.bookRide = CaronaUFCG - Agendar Carona
-
 success.signup = Cadastrado com sucesso
 success.logout = Deslogado com sucesso
 success.profile = Perfil atualizado com sucesso

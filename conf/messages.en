@@ -1,1 +1,90 @@
-welcome = Welcome to CaronaUFCG. Please log in
+title = CaronaUFCG
+welcome.login = Welcome to CaronaUFCG. Please log in
+welcome.index = Welcome to CaronaUFCG!
+
+success.signup = Signed up successfully
+success.logout = Logged out successfully
+success.profile = Profile updated successfully
+
+error.login = E-mail or password don't match
+error.signup = There was a problem signing up
+error.invalidPassword = Invalid password
+error.mismatchPasswords = Passwords don't match
+
+signup.title = Personal Data
+signup.picture = Picture
+signup.addressTitle = Address
+
+index.registration = Registration
+index.home = Home
+index.profile = My Profile
+index.offerRide = Offer Ride
+index.searchRide = Search Ride
+index.rideRequests = Received Requests
+index.logout = Logout
+
+index2.rideCount = There are {0} rides offered!
+
+offerRide.title = Offer Ride
+offerRide.type = Type
+offerRide.goToUFCG = Go to UFCG
+offerRide.backFromUFCG = Back from UFCG
+offerRide.goAndBackToUFCG = Go and back from UFCG
+offerRide.departure = Departure
+offerRide.departureTime = Departure Time
+offerRide.departureStreet = Departure Street
+offerRide.departureDistrict = Departure District
+offerRide.leaving = Leaving
+offerRide.leavingTime = Leaving Time
+offerRide.leavingStreet = Leaving Street
+offerRide.leavingDistrict = Leaving District
+offerRide.spotCount = Available Spots
+
+profile.title = Change my data
+profile.picture = Picutre
+profile.name = Name
+profile.registration = Registration
+profile.phone = Phone
+profile.email = E-mail
+profile.spotCount = Available Spots
+profile.street = Street
+profile.district = District
+
+searchRide.title = Search Ride
+searchRide.type = Type
+searchRide.departureType = Go to UFCG
+searchRide.leavingType = Back from UFCG
+searchRide.departure = Departure
+searchRide.leaving = Leaving
+searchRide.departureDistrict = Departure District
+searchRide.leavingDistrict = Leaving District
+searchRide.hour = Hour
+
+resultRide.title = Search Results
+resultRide.found = Results found: {0}
+resultRide.type = Type
+resultRide.driver = Driver
+resultRide.phone = Phone
+resultRide.district = District
+resultRide.street = Street
+resultRide.departureTime = Departure Time
+resultRide.spotCount = Available Spots
+
+requests.title = Received Requests
+requests.passenger = Passenger
+requests.street = Street
+requests.phone = Phone
+requests.district = District
+requests.hour = Hour
+
+button.signup = Sign Up
+button.login = Log In
+button.update = Update
+button.accept = Accept
+button.refuse = Refuse
+button.ignore = Ignore
+button.back = Back
+button.reset = Reset
+button.requestRide = Request Ride
+button.offerRide = Offer Ride
+button.searchRide = Search Ride
