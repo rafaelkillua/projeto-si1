@@ -75,6 +75,7 @@ resultRide.spotCount = Quantidade de Vagas
 requests.title = Solicitações Recebidas
 requests.passenger = Passageiro
 requests.street = Rua
+requests.phone = Telefone
 requests.district = Bairro
 requests.hour = Horário
 

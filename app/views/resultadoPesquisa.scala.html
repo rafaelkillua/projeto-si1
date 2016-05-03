@@ -1,6 +1,7 @@
 @import play.i18n._
 
-@(usuario: Usuario); var i=1; var k=1; var q:Integer = usuario.getPesquisasDoUsuario().size()
+@(usuario: Usuario);
+@import java.math.BigInteger; var i=1; var k=1; var q:Integer = usuario.getPesquisasDoUsuario().size()
 
 @index("CaronaUFCG - Pesquisa")(usuario) {
 
