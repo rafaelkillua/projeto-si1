@@ -1,4 +1,5 @@
 @import models.formularios.FormularioPerfil
+@import play.i18n._
 @(usuario: Usuario)(formPerfil: play.data.Form[FormularioPerfil])
 
 @index("CaronaUFCG - Perfil")(usuario) {
@@ -7,10 +8,10 @@
             <fieldset>
 
                     <!-- Form Name -->
-                <legend align="center">Alterar dados pessoais</legend>
+                <legend align="center">@Messages.get("profile.title")</legend>
 
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="foto">Foto: </label>
+                    <label class="col-md-4 control-label" for="foto">@Messages.get("profile.image"): </label>
                     <div class="col-md-8">
                         <img id="preview" alt="your image" width="120" src="@routes.Assets.versioned("images/fofao.jpg")" />
                         <input id="foto" name="foto" class="input-file" type="file" accept="image/jpeg" onchange="readURL(this)">
@@ -18,14 +19,14 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="nome">Nome: </label>
+                    <label class="col-md-4 control-label" for="nome">@Messages.get("profile.name"): </label>
                     <div class="col-md-4">
                         <input id="nome" name="nome" type="text" value="@usuario.getNome()" class="form-control input-md" required="">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="matricula">Matrícula: </label>
+                    <label class="col-md-4 control-label" for="matricula">@Messages.get("profile.registration"): </label>
                     <div class="col-md-4">
                         <input id="matricula" name="matricula" type="text" value="@usuario.getMatricula()" class="form-control input-md" required="">
 
@@ -34,7 +35,7 @@
 
                     <!-- Text input-->
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="telefone">Telefone: </label>
+                    <label class="col-md-4 control-label" for="telefone">@Messages.get("profile.phone"): </label>
                     <div class="col-md-4">
                         <input id="telefone" name="telefone" type="text" value="@usuario.getTelefone()" class="form-control input-md" required="">
 
@@ -43,7 +44,7 @@
 
                     <!-- Text input-->
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="email">E-mail: </label>
+                    <label class="col-md-4 control-label" for="email">@Messages.get("profile.email"): </label>
                     <div class="col-md-4">
                         <input id="email" name="email" type="email" value="@usuario.getEmail()" class="form-control input-md" required="">
 
@@ -51,7 +52,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="quantidadeDeVagas">Quantidade de <br> vagas:</label>
+                    <label class="col-md-4 control-label" for="quantidadeDeVagas">@Messages.get("profile.spotCount"):</label>
                     <div class="col-md-4">
                         <input id="quantidadeDeVagas" name="quantidadeDeVagas" type="number" value="@usuario.getQuantidadeDeVagas()" class="form-control input-md" required="" max="6" min="0">
                     </div>
@@ -59,7 +60,7 @@
 
                     <!-- Text input-->
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="rua">Rua:</label>
+                    <label class="col-md-4 control-label" for="rua">@Messages.get("profile.street"):</label>
                     <div class="col-md-4">
                         <input id="rua" name="rua" type="text" value="@usuario.getEndereco().getRua()" class="form-control input-md" required="">
                     </div>
@@ -67,7 +68,7 @@
 
                     <!-- Text input-->
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="bairro">Bairro:</label>
+                    <label class="col-md-4 control-label" for="bairro">@Messages.get("profile.district"):</label>
                     <div class="col-md-4">
                         <input id="bairro" name="bairro" type="text" value="@usuario.getEndereco().getBairro()" class="form-control input-md" required="">
                     </div>
@@ -76,8 +77,8 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="atualizar"></label>
                     <div class="col-md-8">
-                        <button id="atualizar" name="atualizar" class="btn btn-success" type="submit">Atualizar</button>
-                        <button id="limpar" name="limpar" class="btn btn-primary" type="reset">Resetar</button>
+                        <button id="atualizar" name="atualizar" class="btn btn-success" type="submit">@Messages.get("button.update")</button>
+                        <button id="limpar" name="limpar" class="btn btn-primary" type="reset">@Messages.get("button.reset")</button>
                     </div>
                 </div>
             </fieldset>

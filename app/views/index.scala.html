@@ -1,3 +1,5 @@
+@import play.i18n._
+
 @(title: String)(usuario: Usuario)(content: Html)
 
     @main(title) {
@@ -6,7 +8,7 @@
 
                 <img src="@routes.Assets.versioned("/images/banner2.jpg")" alt="">
                 <div id="perfil-box-nome">@usuario.getNome()</div>
-                <div id="perfil-box-matricula">Matricula: @usuario.getMatricula()</div>
+                <div id="perfil-box-matricula">@Messages.get("index.registration"): @usuario.getMatricula()</div>
                 <div id="perfil-box-foto"><img src="@routes.Assets.versioned("/images/fofao.jpg")" width="150" height="150"></div>
             </div>
 
@@ -24,15 +26,19 @@
                         </div>
                         <div>
                             <ul class="nav navbar-nav">
-                                <li class="navbarButton"><a href="/">Home</a></li>
-                                <li class="navbarButton"><a href="perfil">Meu Perfil</a></li>
-                                <li class="navbarButton"><a href="oferecerCarona">Oferecer Carona</a></li>
+                                <li class="navbarButton"><a href="/">@Messages.get("index.home")</a></li>
+                                <li class="navbarButton"><a href="perfil">@Messages.get("index.profile")</a></li>
+                                <li class="navbarButton"><a href="oferecerCarona">@Messages.get("index.offerRide")</a></li>
                                 <li class="navbarButton"><a href="pesquisarCarona">
-                                    Pesquisar Caronas <span class="badge"></span></a></li>
+                                    @Messages.get("index.searchRide")<span class="badge"></span></a></li>
                                 <li class="navbarButton"><a href="solicitacoes">
-                                    Solicitações Recebidas <span class="badge">@usuario.getSolicitacoesRecebidas().size()</span></a></li>
+                                    @Messages.get("index.rideRequests") <span class="badge">@usuario.getSolicitacoesRecebidas().size()</span></a></li>
                                 <li class="navbarButton"><a href="@routes.LoginController.deslogar()" type="button">
-                                    Deslogar</a></li>
+                                @Messages.get("index.logout")</a></li>
+                            </ul>
+                            <ul class="nav navbar-nav" style="float: right">
+                                <li class="navbarButton"><a href="ptbr">PT-BR</a></li>
+                                <li class="navbarButton"><a href="en">EN</a></li>
                             </ul>
                         </div>
                     </div>

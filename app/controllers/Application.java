@@ -1,11 +1,11 @@
 package controllers;
 
 import models.CatalogoCaronas;
-import models.formularios.*;
 import models.Usuario;
-import play.Logger;
+import models.formularios.*;
 import play.data.Form;
-import play.mvc.*;
+import play.i18n.Messages;
+import play.mvc.Controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -69,6 +69,6 @@ public class Application extends Controller {
                 return user;
             }
         }
-        throw new Exception("E-mail* ou senha não conferem");
+        throw new Exception(Messages.get("error.login"));
     }
 }

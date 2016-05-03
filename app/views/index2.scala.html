@@ -1,8 +1,9 @@
+@import play.i18n._
 @(usuario: Usuario)(qtdeCaronas: Integer)
 
 @index("Carona UFCG - Home")(usuario) {
     <div class="container indexBody">
-        <legend align="center">Bem vindo ao CaronaUFCG!</legend>
-        <h1 align="center">Há @qtdeCaronas caronas cadastradas</h1>
+        <legend align="center">@Messages.get("welcome.index")</legend>
+        <h1 align="center">@Messages.get("index2.rideCount", qtdeCaronas)</h1>
     </div>
 }

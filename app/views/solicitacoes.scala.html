@@ -1,41 +1,20 @@
+@import play.i18n._
+
 @(usuario: Usuario)
 
 @index("CaronaUFCG - Solicitações Recebidas")(usuario) {
     <div class ="container">
-        <legend align="center">Solicitações Recebidas</legend>
+        <legend align="center">@Messages.get("resultRide.title")</legend>
         <div class="row">
             <div class="col-sm-4">
                 <ul><img src="@routes.Assets.versioned("/images/ronaldinho.jpg")" class="img-circle" alt="Passageiro 1" width="136" height="136"> </ul>
-                <ul>Passageiro: Passageiro1</ul>
-                <ul>Rua: Rodrigues Alves</ul>
-                <ul>Número: 1230</ul>
-                <ul>Bairro: Bela Vista</ul>
-                <ul>Data: 15/03/2016 (Terça-feira)</ul>
-                <ul>Horário: 7:40</ul>
-                <ul><button id="solicitarCarona" name = "solicitarCarona" class ="btn btn-success" onclick="aceitarSolicitacao()">Aceitar</button>
-                    <button id="solicitarCarona" name = "solicitarCarona" class ="btn btn-danger" onclick="recusarSolicitacao()">Recusar</button></ul>
-            </div>
-            <div class="col-sm-4">
-                <ul><img src="@routes.Assets.versioned("/images/fofao.jpg")" class="img-circle" alt="Passageiro 2" width="136" height="136"> </ul>
-                <ul>Passageiro: Passageiro2</ul>
-                <ul>Rua: Severino Neto</ul>
-                <ul>Número: 374</ul>
-                <ul>Bairro: Centro</ul>
-                <ul>Data: 14/03/2016 (Segunda-feira)</ul>
-                <ul>Horário: 9:20</ul>
-                <ul><button id="solicitarCarona" name = "solicitarCarona" class ="btn btn-success" onclick="aceitarSolicitacao()">Aceitar</button>
-                    <button id="solicitarCarona" name = "solicitarCarona" class ="btn btn-danger" onclick="recusarSolicitacao()">Recusar</button></ul>
-            </div>
-            <div class="col-sm-4">
-                <ul><img src="@routes.Assets.versioned("/images/lula.jpg")" class="img-circle" alt="Passageiro 3" width="136" height="136"> </ul>
-                <ul>Passageiro: Passageiro3</ul>
-                <ul>Rua: Indios Cariris</ul>
-                <ul>Número: 781</ul>
-                <ul>Bairro: Centro</ul>
-                <ul>Data: 16/03/2016 (Quarta-feira)</ul>
-                <ul>Horário: 14:30</ul>
-                <ul><button id="solicitarCarona" name = "solicitarCarona" class ="btn btn-success" onclick="aceitarSolicitacao()">Aceitar</button>
-                    <button id="solicitarCarona" name = "solicitarCarona" class ="btn btn-danger" onclick="recusarSolicitacao()">Recusar</button></ul>
+                <ul>@Messages.get("requests.passenger"): Passageiro1</ul>
+                <ul>@Messages.get("requests.street"): Rodrigues Alves</ul>
+                <ul>@Messages.get("requests.phone"): (83) 98765 4321</ul>
+                <ul>@Messages.get("requests.district"): Bela Vista</ul>
+                <ul>@Messages.get("requests.hour"): 7:40</ul>
+                <ul><button id="solicitarCarona" name = "solicitarCarona" class ="btn btn-success" onclick="aceitarSolicitacao()">@Messages.get("button.accept")</button>
+                    <button id="solicitarCarona" name = "solicitarCarona" class ="btn btn-danger" onclick="recusarSolicitacao()">@Messages.get("button.refuse")</button></ul>
             </div>
         </div>
     </div>

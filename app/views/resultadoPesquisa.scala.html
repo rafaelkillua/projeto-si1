@@ -1,33 +1,35 @@
-@(usuario: Usuario)
-@import java.math.BigInteger; var i=1; var k=1
+@import play.i18n._
+
+@(usuario: Usuario); var i=1; var k=1; var q:Integer = usuario.getPesquisasDoUsuario().size()
+
 @index("CaronaUFCG - Pesquisa")(usuario) {
 
   <div class="container">
 
-    <legend align="center">Resultados encontrados: @usuario.getPesquisasDoUsuario.size()</legend>
+    <legend align="center">@Messages.get("resultRide.found", q)</legend>
 
 
     <div id="content" class="row">
     @for( carona <- usuario.getPesquisasDoUsuario){
       <div class="col-sm-4">
         <ul><img src="@routes.Assets.versioned("/images/user.png")" class="img-circle" alt="motorista" width="136" height="136"> </ul>
-        <ul>Tipo de Carona: @carona.getTipoString()</ul>
-        <ul>Motorista: @carona.getMotorista().getNome()</ul>
-        <ul>Telefone: @carona.getMotorista().getTelefone</ul>
+        <ul>@Messages.get("resultRide.type"): @carona.getTipoString()</ul>
+        <ul>@Messages.get("resultRide.driver"): @carona.getMotorista().getNome()</ul>
+        <ul>@Messages.get("resultRide.phone"): @carona.getMotorista().getTelefone()</ul>
         @if(carona.isIda()) {
-        <ul>Bairro: @carona.getRota.getEnderecoPartida.getBairro()</ul>
-        <ul>Rua: @carona.getRota.getEnderecoPartida.getRua</ul>
+        <ul>@Messages.get("resultRide.district"): @carona.getRota.getEnderecoPartida.getBairro()</ul>
+        <ul>@Messages.get("resultRide.street"): @carona.getRota.getEnderecoPartida.getRua()</ul>
         } else {
-          <ul>Bairro: @carona.getRota.getEnderecoDestino.getBairro()</ul>
-          <ul>Rua: @carona.getRota.getEnderecoDestino.getRua</ul>
+          <ul>@Messages.get("resultRide.district"): @carona.getRota.getEnderecoDestino.getBairro()</ul>
+          <ul>@Messages.get("resultRide.street"): @carona.getRota.getEnderecoDestino.getRua()</ul>
         }
-        <ul>Horário de Partida: @carona.getHora()</ul>
-        <ul>Vagas disponíveis: @carona.getVagasDisponiveis()</ul>
+        <ul>@Messages.get("resultRide.departureTime"): @carona.getHora()</ul>
+        <ul>@Messages.get("resultRide.spotCount"): @carona.getVagasDisponiveis()</ul>
         <ul>
           <button id="solicitarCarona" name = "solicitarCarona" class ="btn btn-success btn-xs" onclick="">
-                            Solicitar carona</button>
+            @Messages.get("button.requestRide")</button>
           <button id="recusarOfertaCarona" name = "recusarOfertaCarona" class ="btn btn-danger btn-xs" onclick="">
-                            Ignorar</button>
+            @Messages.get("buton.ignore")</button>
         </ul>
       </div>
     }

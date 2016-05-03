@@ -1,28 +1,29 @@
 @import models.formularios.FormularioCarona
+@import play.i18n._
 @(usuario: Usuario)(formCarona: play.data.Form[FormularioCarona])
 
 @index("CaronaUFCG - Oferecer Carona")(usuario) {
     <div class="container">
-        <legend align="center">Oferecer Carona</legend>
+        <legend align="center">@Messages.get("offerRide.title")</legend>
         @helper.form(routes.CaronaController.criarCarona(), 'class -> "form-horizontal") {
             <fieldset>
 
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="tipo">Tipo:</label>
+                    <label class="col-md-4 control-label" for="tipo">@Messages.get("offerRide.type"):</label>
                     <div class="col-md-4">
-                        <input type="radio" name="tipo" value="ida" checked onclick="caronaIda()"> Ida para UFCG
-                        <input type="radio" name="tipo" value="volta" onclick="caronaVolta()"> Volta da UFCG
-                        <input type="radio" name="tipo" value="idaVolta" onclick="caronaIdaVolta()"> Ida e Volta
+                        <input type="radio" name="tipo" value="ida" checked onclick="caronaIda()"> @Messages.get("offerRide.goToUFCG")
+                        <input type="radio" name="tipo" value="volta" onclick="caronaVolta()"> @Messages.get("offerRide.backFromUFCG")
+                        <input type="radio" name="tipo" value="idaVolta" onclick="caronaIdaVolta()"> @Messages.get("offerRide.goAndBackToUFCG")
                     </div>
                 </div>
 
                 <div id="partida">
 
-                    <legend align="center">Partida</legend>
+                    <legend align="center">@Messages.get("offerRide.departure")</legend>
 
                         <!-- Text input-->
                     <div class="form-group">
-                        <label class="col-md-4 control-label" for="horaPartida">Hora de Partida:</label>
+                        <label class="col-md-4 control-label" for="horaPartida">@Messages.get("offerRide.departureTime"):</label>
                         <div class="col-md-4">
                             <input id="horaPartida" name="horaPartida" type="text" value="08:00" class="form-control input-md" required="">
                         </div>
@@ -30,7 +31,7 @@
 
                         <!-- Text input-->
                     <div class="form-group">
-                        <label class="col-md-4 control-label" for="ruaPartida">Rua de Partida:</label>
+                        <label class="col-md-4 control-label" for="ruaPartida">@Messages.get("offerRide.departureStreet"):</label>
                         <div class="col-md-4">
                             <input id="ruaPartida" name="ruaPartida" type="text" value="@usuario.getEndereco().getRua()" class="form-control input-md" required="">
                         </div>
@@ -38,7 +39,7 @@
 
                         <!-- Text input-->
                     <div class="form-group">
-                        <label class="col-md-4 control-label" for="bairroPartida">Bairro de Partida:</label>
+                        <label class="col-md-4 control-label" for="bairroPartida">@Messages.get("offerRide.departureDistrict"):</label>
                         <div class="col-md-4">
                             <input id="bairroPartida" name="bairroPartida" type="text" value="@usuario.getEndereco().getBairro()" class="form-control input-md" required="">
                         </div>
@@ -48,11 +49,11 @@
 
                 <div id="retorno" style="display : none">
 
-                    <legend id="legendRetorno" align="center">Retorno</legend>
+                    <legend id="legendRetorno" align="center">@Messages.get("offerRide.leaving")</legend>
 
                         <!-- Text input-->
                     <div class="form-group">
-                        <label class="col-md-4 control-label" for="horaRetorno">Hora de retorno:</label>
+                        <label class="col-md-4 control-label" for="horaRetorno">@Messages.get("offerRide.leavingTime"):</label>
                         <div class="col-md-4">
                             <input id="horaRetorno" name="horaRetorno" type="text" value="18:00" class="form-control input-md" required="">
                         </div>
@@ -60,7 +61,7 @@
 
                         <!-- Text input-->
                     <div class="form-group">
-                        <label class="col-md-4 control-label" for="ruaRetorno">Rua de retorno:</label>
+                        <label class="col-md-4 control-label" for="ruaRetorno">@Messages.get("offerRide.leavingStreet"):</label>
                         <div class="col-md-4">
                             <input id="ruaRetorno" name="ruaRetorno" type="text" value="@usuario.getEndereco().getRua()" class="form-control input-md" required="">
                         </div>
@@ -68,7 +69,7 @@
 
                         <!-- Text input -->
                     <div class="form-group">
-                        <label class="col-md-4 control-label" for="bairroRetorno">Bairro de retorno:</label>
+                        <label class="col-md-4 control-label" for="bairroRetorno">@Messages.get("offerRide.leavingDistrict"):</label>
                         <div class="col-md-4">
                             <input id="bairroRetorno" name="bairroRetorno" type="text" value="@usuario.getEndereco().getBairro()" class="form-control input-md" required="">
                         </div>
@@ -79,8 +80,8 @@
 
                     <!-- Text input -->
                 <div class="form-group">
-                    <legend align="center">Quantidade de Vagas:</legend>
-                    <label class="col-md-4 control-label" for="vagas">Quantidade <br> de vagas:</label>
+                    <legend align="center">@Messages.get("offerRide.spotCount"):</legend>
+                    <label class="col-md-4 control-label" for="vagas">@Messages.get("offerRide.spotCount"):</label>
                     <div class="col-md-4">
                         <input id="vagas" name="vagas" type="number" value="@usuario.getQuantidadeDeVagas()" class="form-control input-md" required="">
                     </div>
@@ -90,8 +91,8 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="oferecer"></label>
                     <div class="col-md-8">
-                        <button id="oferecer" name="oferecer" class="btn btn-success" type="submit">Oferecer Carona</button>
-                        <button id="limpar" name="limpar" class="btn btn-primary" type="reset">Limpar</button>
+                        <button id="oferecer" name="oferecer" class="btn btn-success" type="submit">@Messages.get("button.offerRide")</button>
+                        <button id="limpar" name="limpar" class="btn btn-primary" type="reset">@Messages.get("button.reset")</button>
                     </div>
                 </div>
             </fieldset>

@@ -12,7 +12,6 @@ GET     /deslogar                   controllers.LoginController.deslogar()
 GET     /cadastro                   controllers.ViewController.cadastro()
 POST    /cadastrar                  controllers.CadastroController.cadastrar()
 
-GET     /agendarCarona              controllers.ViewController.agendarCarona()
 GET     /oferecerCarona             controllers.ViewController.oferecerCarona()
 POST    /criarCarona                controllers.CaronaController.criarCarona()
 
@@ -26,6 +25,8 @@ POST    /atualizarPerfil            controllers.PerfilController.atualizarPerfil
 
 GET     /resultadoPesquisa          controllers.ViewController.resultadoPesquisa()
 
+GET     /ptbr                       controllers.IndexController.ptbr()
+GET     /en                         controllers.IndexController.en()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

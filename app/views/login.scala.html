@@ -1,10 +1,11 @@
 @import models.formularios.FormularioLogin
+@import play.i18n._
 @(formLogin: play.data.Form[FormularioLogin])
 
 @main("CaronaUFCG - Login") {
     <div class="container">
     @helper.form(routes.LoginController.logar(), 'class -> "form-horizontal") {
-        <legend align="center">Bem vindo ao CaronaUFCG. Faça seu login</legend>
+        <legend align="center">@Messages.get("welcome.login")</legend>
 
         <div class="form-group">
             <label class="col-md-4 control-label" for="email"></label>
@@ -25,8 +26,8 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for="button1id"></label>
             <div class="col-md-8">
-                <button name="buttonid" class="btn btn-success" type="submit">Entrar</button>
-                <a href="/cadastro" name="buttonid" class="btn btn-default" role="button">Cadastre-se</a>
+                <button name="buttonid" class="btn btn-success" type="submit">@Messages.get("button.login")</button>
+                <a href="/cadastro" name="buttonid" class="btn btn-default" role="button">@Messages.get("button.signup")</a>
             </div>
         </div>
     }

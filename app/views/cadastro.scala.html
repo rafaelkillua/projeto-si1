@@ -1,4 +1,6 @@
 @import models.formularios.FormularioCadastro
+@import play.i18n._
+
 @(formCadastro: play.data.Form[FormularioCadastro])
 
 @main("CaronaUFCG - Cadastro") {
@@ -7,11 +9,11 @@
         <fieldset>
 
                 <!-- Form Name -->
-            <legend align="center">Dados pessoais</legend>
+            <legend align="center">@Messages.get("signup.title")</legend>
 
                 <!-- File Button -->
             <div class="form-group">
-                <label class="col-md-4 control-label" for="foto">Foto: </label>
+                <label class="col-md-4 control-label" for="foto">@Messages.get("signup.picture"): </label>
                 <div class="col-md-8">
                     <img id="preview" alt="yourImage" width="120" src="@routes.Assets.versioned("images/placeholder.png")" />
                     <input id="foto" name="foto" class="input-file" type="file" accept="image/jpeg" onchange="readURL(this)">
@@ -54,7 +56,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="senha"></label>
                 <div class="col-md-4">
-                @helper.inputPassword(formCadastro("senha"), 'class -> "form-control input-md", '_label -> "Senha:", 'required -> "")
+                @helper.inputPassword(formCadastro("senha"), 'id -> "senha", 'class -> "form-control input-md", '_label -> "Senha:", 'required -> "", 'oninput -> "check(this)")
                 </div>
             </div>
 
@@ -62,9 +64,43 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="confirmaSenha"></label>
                 <div class="col-md-4">
-                @helper.inputPassword(formCadastro("confirmaSenha"), 'class -> "form-control input-md", '_label -> "Repetir senha:", 'required -> "")
+                @helper.inputPassword(formCadastro("confirmaSenha"), 'id -> "confirmaSenha", 'class -> "form-control input-md", '_label -> "Repetir senha:", 'required -> "", 'oninput -> "check(this)")
                 </div>
             </div>
+
+            <div class="row">
+            <div class="col-md-4"></div>
+                <div id="erroSenhas" class="col-md-4 alert alert-danger" style="display: none">
+                    @Messages.get("error.mismatchPasswords")
+                </div>
+                <div id="erroSenhas2" class="col-md-4 alert alert-danger" style="display: none">
+                    @Messages.get("error.invalidPassword")
+                </div>
+            <div class="col-md-4"></div>
+            </div>
+
+            <script language='javascript' type='text/javascript'>
+                    function check(input) {
+                        if (input.value != "" && input.value.length < 3) {
+                            document.getElementById("erroSenhas2").removeAttribute("style");
+                        } else {
+                            document.getElementById("erroSenhas2").setAttribute("style", "display: none");
+                        }
+                        if (input.getAttribute("id") == "confirmaSenha") {
+                            if (input.value != "" && input.value != document.getElementById("senha").value) {
+                                document.getElementById("erroSenhas").removeAttribute("style");
+                            } else {
+                                document.getElementById("erroSenhas").setAttribute("style", "display: none");
+                            }
+                        } else {
+                            if (input.value != "" && document.getElementById("confirmaSenha").value != "" && input.value != document.getElementById("confirmaSenha").value) {
+                                document.getElementById("erroSenhas").removeAttribute("style");
+                            } else {
+                                document.getElementById("erroSenhas").setAttribute("style", "display: none");
+                            }
+                        }
+                    }
+            </script>
 
                 <!-- Text input -->
             <div class="form-group">
@@ -74,7 +110,7 @@
                 </div>
             </div>
 
-            <legend align="center">Endereço</legend>
+            <legend align="center">@Messages.get("signup.addressTitle")</legend>
 
                 <!-- Text input-->
             <div class="form-group">
@@ -97,9 +133,9 @@
                 <label class="col-md-4 control-label" for="cadastrar"></label>
                 <div class="col-md-8">
                     <button id="cadastrar" name="cadastrar" class="btn btn-success" type="submit">
-                        Cadastrar</button>
-                    <button id="limpar" name="limpar" class="btn btn-primary" type="reset">Limpar</button>
-                    <a href="/" id="voltar" name="voltar" class="btn btn-default">Voltar</a>
+                    @Messages.get("button.signup")</button>
+                    <button id="limpar" name="limpar" class="btn btn-primary" type="reset">@Messages.get("button.reset")</button>
+                    <a href="/" id="voltar" name="voltar" class="btn btn-default">@Messages.get("button.back")</a>
                 </div>
             </div>
         </fieldset>

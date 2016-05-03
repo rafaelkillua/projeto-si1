@@ -1,8 +1,9 @@
 package controllers;
 
-import models.formularios.FormularioLogin;
 import models.Usuario;
+import models.formularios.FormularioLogin;
 import play.Logger;
+import play.i18n.Messages;
 import play.mvc.Controller;
 import play.mvc.Result;
 
@@ -31,8 +32,9 @@ public class LoginController extends Controller {
     public Result deslogar() {
         String email = session("logado");
         session().clear();
+        flash("success", Messages.get("success.logout"));
         Logger.info("Usuário " + email + " deslogado");
-        return redirect("/");
+        return redirect("/login");
 
     }
 

@@ -1,27 +1,28 @@
 @import models.formularios.FormularioPesquisa
+@import play.i18n._
 @(usuario: Usuario)(formPesquisa: play.data.Form[FormularioPesquisa])
 
 @index("CaronaUFCG - Pesquisar Carona")(usuario) {
   <div class="container">
-    <legend align="center">Pesquisar Caronas</legend>
+    <legend align="center">@Messages.get("searchRide.title")</legend>
     @helper.form(routes.CaronaController.pesquisaCarona(), 'class -> "form-horizontal") {
       <fieldset>
 
         <div class="form-group">
-          <label class="col-md-4 control-label" for="tipo">Tipo:</label>
+          <label class="col-md-4 control-label" for="tipo">@Messages.get("searchRide.type"):</label>
           <div class="col-md-4">
-            <input type="radio" name="tipo" value="ida" checked onclick="caronaIda()"> Ida para UFCG
-            <input type="radio" name="tipo" value="volta" onclick="caronaVolta()"> Volta da UFCG
+            <input type="radio" name="tipo" value="ida" checked onclick="caronaIda()"> @Messages.get("searchRide.departure")
+            <input type="radio" name="tipo" value="volta" onclick="caronaVolta()"> @Messages.get("searchRide.leaving")
           </div>
         </div>
 
         <div id="partida">
 
-          <legend align="center">Partida</legend>
+          <legend align="center">@Messages.get("searchRide.departure")</legend>
             <!-- Text input-->
 
           <div class="form-group">
-            <label class="col-md-4 control-label" for="bairro">Bairro de partida:</label>
+            <label class="col-md-4 control-label" for="bairro">@Messages.get("searchRide.departureDistrict"):</label>
             <div class="col-md-4">
               <input id="bairroPartida" name="bairroPartida" type="text" value="@usuario.getEndereco().getBairro()" class="form-control input-md" required="">
             </div>
@@ -30,11 +31,11 @@
 
         <div id="retorno" style="display : none">
 
-          <legend align="center">Retorno</legend>
+          <legend align="center">@Messages.get("searchRide.leaving")</legend>
             <!-- Text input-->
 
           <div class="form-group">
-            <label class="col-md-4 control-label" for="bairro">Bairro de destino:</label>
+            <label class="col-md-4 control-label" for="bairro">@Messages.get("searchRide.leavingDistrict"):</label>
             <div class="col-md-4">
               <input id="bairroRetorno" name="bairroRetorno" type="text" value="@usuario.getEndereco().getBairro()" class="form-control input-md" required="">
             </div>
@@ -42,7 +43,7 @@
         </div>
 
         <div class="form-group">
-          <label class="col-md-4 control-label" for="hora">Hora de Partida:</label>
+          <label class="col-md-4 control-label" for="hora">@Messages.get("searchRide.hour"):</label>
           <div class="col-md-4">
             <input id="hora" name="hora" type="text" value="" class="form-control input-md" required="">
           </div>
@@ -51,8 +52,8 @@
         <div class="form-group">
           <label class="col-md-4 control-label" for="pesquisar"></label>
           <div class="col-md-8">
-            <button id="pesquisar" name="pesquisar" class="btn btn-success" type="submit">Pequisar Carona</button>
-            <button id="limpar" name="limpar" class="btn btn-primary" type="reset">Limpar Campos</button>
+            <button id="pesquisar" name="pesquisar" class="btn btn-success" type="submit">@Messages.get("button.searchRide")</button>
+            <button id="limpar" name="limpar" class="btn btn-primary" type="reset">@Messages.get("button.reset")</button>
           </div>
         </div>
       </fieldset>

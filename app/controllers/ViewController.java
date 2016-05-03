@@ -51,15 +51,6 @@ public class ViewController extends Controller {
         }
     }
 
-    public Result agendarCarona() {
-        try {
-            Application.getInstance().getUsuarioLogado();
-            return ok(agendarCarona.render(Application.getInstance().getUsuarioLogado()));
-        } catch (Exception e) {
-            return redirect("/");
-        }
-    }
-
     public Result oferecerCarona() {
         try {
             Application.getInstance().getUsuarioLogado();

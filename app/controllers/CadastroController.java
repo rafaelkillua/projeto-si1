@@ -1,9 +1,10 @@
 package controllers;
 
-import models.formularios.FormularioCadastro;
 import models.Usuario;
-import play.data.Form;
+import models.formularios.FormularioCadastro;
 import play.Logger;
+import play.data.Form;
+import play.i18n.Messages;
 import play.mvc.Controller;
 import play.mvc.Result;
 
@@ -26,12 +27,12 @@ public class CadastroController extends Controller {
                     cadastro.quantidadeDeVagas);
             Application.getInstance().cadastrarUsuario(usuario);
             Calendar horaFinal = Calendar.getInstance();
-            flash("success", "Cadastrado com sucesso");
+            flash("success", Messages.get("success.signup"));
             Logger.info("Usuário " + usuario.getEmail() + " cadastrado em " +
                     (horaFinal.getTimeInMillis() - horaInicial.getTimeInMillis()) + " ms");
             return redirect("/login");
         } else {
-            flash("error", "Houve algum problema no cadastro.");
+            flash("error", Messages.get("error.signup"));
             Logger.error("Erro no Cadastro");
             return redirect("/cadastro");
         }

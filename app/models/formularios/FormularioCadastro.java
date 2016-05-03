@@ -1,6 +1,7 @@
 package models.formularios;
 
 import play.Logger;
+import play.i18n.Messages;
 
 /**
  * Created by Rafael on 20/03/2016.
@@ -22,7 +23,7 @@ public class FormularioCadastro {
     public String validate() {
         if(!senha.equals(confirmaSenha)) {
             Logger.error("Senhas não conferem");
-            return ("Senhas não conferem");
+            return Messages.get("error.mismatchPasswords");
         }
         return null;
     }

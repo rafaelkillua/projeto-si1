@@ -4,6 +4,7 @@ import models.Usuario;
 import models.formularios.FormularioPerfil;
 import play.Logger;
 import play.data.Form;
+import play.i18n.Messages;
 import play.mvc.Controller;
 import play.mvc.Result;
 
@@ -25,7 +26,7 @@ public class PerfilController extends Controller {
                 session("logado", usuarioLogado.getEmail());
                 usuarioLogado.setQuantidadeDeVagas(perfil.quantidadeDeVagas);
                 usuarioLogado.setEndereco(perfil.rua, perfil.bairro);
-                flash("success", "Perfil atualizado com sucesso");
+                flash("success", Messages.get("success.profile"));
                 Calendar horaFinal = Calendar.getInstance();
                 Logger.info("Usuário " + usuarioLogado.getEmail() + " atualizou o perfil em " +
                         (horaFinal.getTimeInMillis() - horaInicial.getTimeInMillis()) + " ms");

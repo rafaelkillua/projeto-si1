@@ -1,0 +1,91 @@
+title = CaronaUFCG
+welcome.login = Bem vindo ao CaronaUFCG. Faça seu login
+welcome.index = Bem vindo ao CaronaUFCG
+
+title.bookRide = CaronaUFCG - Agendar Carona
+
+success.signup = Cadastrado com sucesso
+success.logout = Deslogado com sucesso
+success.profile = Perfil atualizado com sucesso
+
+error.login = E-mail ou senha não conferem
+error.signup = Houve algum problema no cadastro
+error.invalidPassword = Senha inválida
+error.mismatchPasswords = Senhas não conferem
+
+signup.title = Dados Pessoais
+signup.picture = Foto
+signup.addressTitle = Endereço
+
+index.registration = Matrícula
+index.home = Home
+index.profile = Meu Perfil
+index.offerRide = Oferecer Carona
+index.searchRide = Pesquisar Carona
+index.rideRequests = Solicitações Recebidas
+index.logout = Deslogar
+
+index2.rideCount = Há {0} caronas cadastradas!
+
+offerRide.title = Oferecer Carona
+offerRide.type = Tipo
+offerRide.goToUFCG = Ir para UFCG
+offerRide.backFromUFCG = Voltar da UFCG
+offerRide.goAndBackToUFCG = Ir e voltar da UFCG
+offerRide.departure = Partida
+offerRide.departureTime = Horário de Partida
+offerRide.departureStreet = Rua de Partida
+offerRide.departureDistrict = Bairro de Partida
+offerRide.leaving = Retorno
+offerRide.leavingTime = Horário de Retorno
+offerRide.leavingStreet = Rua de Retorno
+offerRide.leavingDistrict = Bairro de Retorno
+offerRide.spotCount = Quantidade de vagas
+
+profile.title = Alterar meu dados
+profile.picture = Foto
+profile.name = Nome
+profile.registration = Matrícula
+profile.phone = Telefone
+profile.email = E-mail
+profile.spotCount = Quantidade de Vagas
+profile.street = Rua
+profile.district = Bairro
+
+searchRide.title = Pesquisar Carona
+searchRide.type = Tipo
+searchRide.departureType = Ida para UFCG
+searchRide.leavingType = Volta da UFCG
+searchRide.departure = Partida
+searchRide.leaving = Retorno
+searchRide.departureDistrict = Bairro de Partida
+searchRide.leavingDistrict = Bairro de Retorno
+searchRide.hour = Hora
+
+resultRide.title = Resultados de Pesquisa
+resultRide.found = Resultados encontrados: {0}
+resultRide.type = Tipo
+resultRide.driver = Motorista
+resultRide.phone = Telefone
+resultRide.district = Bairro
+resultRide.street = Rua
+resultRide.departureTime = Horário de Partida
+resultRide.spotCount = Quantidade de Vagas
+
+requests.title = Solicitações Recebidas
+requests.passenger = Passageiro
+requests.street = Rua
+requests.district = Bairro
+requests.hour = Horário
+
+button.signup = Cadastrar
+button.login = Entrar
+button.update = Atualizar
+button.accept = Aceitar
+button.refuse = Recusar
+button.ignore = Ignorar
+button.back = Voltar
+button.reset = Limpar
+button.requestRide = Solicitar Carona
+button.offerRide = Oferecer Carona
+button.searchRide = Pesquisar Carona
