@@ -27,13 +27,13 @@
                         <div>
                             <ul class="nav navbar-nav">
                                 <li class="navbarButton"><a href="/">@Messages.get("index.home")</a></li>
-                                <li class="navbarButton"><a href="perfil">@Messages.get("index.profile")</a></li>
-                                <li class="navbarButton"><a href="oferecerCarona">@Messages.get("index.offerRide")</a></li>
-                                <li class="navbarButton"><a href="pesquisarCarona">
+                                <li class="navbarButton"><a href="/perfil">@Messages.get("index.profile")</a></li>
+                                <li class="navbarButton"><a href="/oferecerCarona">@Messages.get("index.offerRide")</a></li>
+                                <li class="navbarButton"><a href="/pesquisarCarona">
                                     @Messages.get("index.searchRide")<span class="badge"></span></a></li>
-                                <li class="navbarButton"><a href="solicitacoes">
+                                <li class="navbarButton"><a href="/solicitacoes">
                                     @Messages.get("index.rideRequests") <span class="badge">@usuario.getSolicitacoesRecebidas().size()</span></a></li>
-                                <li class="navbarButton"><a href="@routes.LoginController.deslogar()" type="button">
+                                <li class="navbarButton"><a href="/deslogar" type="button">
                                 @Messages.get("index.logout")</a></li>
                             </ul>
                             <ul class="nav navbar-nav" style="float: right">

@@ -78,10 +78,10 @@ public class ViewController extends Controller {
         }
     }
 
-    public Result resultadoPesquisa(){
+    public Result resultadoPesquisa(int pagina){
         try{
             Application.getInstance().getUsuarioLogado();
-            return ok(resultadoPesquisa.render(Application.getInstance().getUsuarioLogado()));
+            return ok(resultadoPesquisa.render(Application.getInstance().getUsuarioLogado(), pagina));
         }catch (Exception e){
             return redirect("/");
         }

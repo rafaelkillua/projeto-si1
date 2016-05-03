@@ -23,7 +23,7 @@ GET     /solicitacoes               controllers.ViewController.solicitacoes()
 GET     /perfil                     controllers.ViewController.perfil()
 POST    /atualizarPerfil            controllers.PerfilController.atualizarPerfil()
 
-GET     /resultadoPesquisa          controllers.ViewController.resultadoPesquisa()
+GET     /resultadoPesquisa/:pagina  controllers.ViewController.resultadoPesquisa(pagina: Integer)
 
 GET     /ptbr                       controllers.IndexController.ptbr()
 GET     /en                         controllers.IndexController.en()

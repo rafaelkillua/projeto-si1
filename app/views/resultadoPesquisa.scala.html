@@ -1,41 +1,58 @@
 @import play.i18n._
 
-@(usuario: Usuario);
-@import java.math.BigInteger; var i=1; var k=1; var q:Integer = usuario.getPesquisasDoUsuario().size()
+@(usuario: Usuario)(pagina: Integer);
+
+@carona(pos: Integer) = @{
+    usuario.getPesquisasDoUsuario().get(pos)
+}
 
 @index("CaronaUFCG - Pesquisa")(usuario) {
 
-  <div class="container">
+    <div class="container">
 
-    <legend align="center">@Messages.get("resultRide.found", q)</legend>
+        <legend align="center">@Messages.get("resultRide.found", Integer.valueOf(usuario.getPesquisasDoUsuario().size()))</legend>
 
-
-    <div id="content" class="row">
-    @for( carona <- usuario.getPesquisasDoUsuario){
-      <div class="col-sm-4">
-        <ul><img src="@routes.Assets.versioned("/images/user.png")" class="img-circle" alt="motorista" width="136" height="136"> </ul>
-        <ul>@Messages.get("resultRide.type"): @carona.getTipoString()</ul>
-        <ul>@Messages.get("resultRide.driver"): @carona.getMotorista().getNome()</ul>
-        <ul>@Messages.get("resultRide.phone"): @carona.getMotorista().getTelefone()</ul>
-        @if(carona.isIda()) {
-        <ul>@Messages.get("resultRide.district"): @carona.getRota.getEnderecoPartida.getBairro()</ul>
-        <ul>@Messages.get("resultRide.street"): @carona.getRota.getEnderecoPartida.getRua()</ul>
-        } else {
-          <ul>@Messages.get("resultRide.district"): @carona.getRota.getEnderecoDestino.getBairro()</ul>
-          <ul>@Messages.get("resultRide.street"): @carona.getRota.getEnderecoDestino.getRua()</ul>
-        }
-        <ul>@Messages.get("resultRide.departureTime"): @carona.getHora()</ul>
-        <ul>@Messages.get("resultRide.spotCount"): @carona.getVagasDisponiveis()</ul>
-        <ul>
-          <button id="solicitarCarona" name = "solicitarCarona" class ="btn btn-success btn-xs" onclick="">
-            @Messages.get("button.requestRide")</button>
-          <button id="recusarOfertaCarona" name = "recusarOfertaCarona" class ="btn btn-danger btn-xs" onclick="">
-            @Messages.get("button.ignore")</button>
-        </ul>
-      </div>
-    }
+        <div class="row">
+            @for(pos <- (pagina - 1) * 4 until (pagina * 4)) {
+                @if(pos < usuario.getPesquisasDoUsuario().size()) {
+                    <div class="col-md-3">
+                        <ul><img src="@routes.Assets.versioned("/images/user.png")" class="img-circle" alt="motorista" width="136" height="136"> </ul>
+                        <ul>@Messages.get("resultRide.type"): @carona(pos).getTipoString()</ul>
+                        <ul>@Messages.get("resultRide.driver"): @carona(pos).getMotorista().getNome()</ul>
+                        <ul>@Messages.get("resultRide.phone"): @carona(pos).getMotorista().getTelefone()</ul>
+                        @if(carona(pos).isIda()) {
+                            <ul>@Messages.get("resultRide.district")
+                                : @carona(pos).getRota.getEnderecoPartida.getBairro()</ul>
+                            <ul>@Messages.get("resultRide.street"): @carona(pos).getRota.getEnderecoPartida.getRua()</ul>
+                        } else {
+                            <ul>@Messages.get("resultRide.district")
+                                : @carona(pos).getRota.getEnderecoDestino.getBairro()</ul>
+                            <ul>@Messages.get("resultRide.street"): @carona(pos).getRota.getEnderecoDestino.getRua()</ul>
+                        }
+                        <ul>@Messages.get("resultRide.departureTime"): @carona(pos).getHora()</ul>
+                        <ul>@Messages.get("resultRide.spotCount"): @carona(pos).getVagasDisponiveis()</ul>
+                        <ul>
+                            <button id="solicitarCarona" name = "solicitarCarona" class ="btn btn-success btn-xs" onclick="">
+                            @Messages.get("button.requestRide")</button>
+                            <button id="recusarOfertaCarona" name = "recusarOfertaCarona" class ="btn btn-danger btn-xs" onclick="">
+                            @Messages.get("button.ignore")</button>
+                        </ul>
+                    </div>
+                }
+            }
+        </div>
+        <div class="row">
+            <ul class="pagination">
+            @for(pagination <- 1 to (usuario.getPesquisasDoUsuario().size() - 1) / 4 + 1) {
+                @if(pagination == pagina) {
+                    <li class="active"><a href="/resultadoPesquisa/@pagination">@pagination</a></li>
+                } else {
+                    <li><a href="/resultadoPesquisa/@pagination">@pagination</a></li>
+                }
+            }
+            </ul>
+        </div>
     </div>
-  </div>
 
 
 }

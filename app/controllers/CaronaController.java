@@ -95,7 +95,7 @@ public class CaronaController extends Controller {
             Logger.error("Excecao ao Pesquisar Carona", e.getMessage());
         }
 
-        return redirect("/resultadoPesquisa");
+        return redirect("/resultadoPesquisa/1");
     }
 
     private Carona criarCaronaIda(FormularioCarona formCarona) throws Exception {
