@@ -2,11 +2,26 @@ package models;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.*;
+import play.data.validation.Constraints;
+import com.avaje.ebean.Model;
 
 /**
  * Created by Aillkeen on 16/04/2016.
  */
-public class Carona {
+
+@Entity
+public class Carona extends Model {
+
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    public Long id;
+
+    @Constraints.Required
+    public String nome;
+
+    public static Model.Finder<Long,Carona> find = new Model.Finder<Long,Carona>(Carona.class);
 
     private String hora;
     private Rota rota;
