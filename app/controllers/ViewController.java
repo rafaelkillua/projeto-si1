@@ -1,9 +1,12 @@
 package controllers;
 
+import models.Carona;
 import play.Logger;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.*;
+
+import java.util.List;
 
 /**
  * Created by Rafael on 10/04/2016.

@@ -35,7 +35,8 @@ public class CaronaController extends Controller {
                     horaFinal = Calendar.getInstance();
                     Logger.info("Carona do tipo Ida criada em " + (horaFinal.getTimeInMillis() - horaInicial.getTimeInMillis()) + " ms");
                 } catch (Exception e) {
-                    Logger.error("Excecao ao criar carona de Ida", e.getMessage());
+                    Logger.error("Excecao ao criar carona de Ida - " + e.getMessage());
+                    e.printStackTrace();
                 }
             } else if (formCarona.tipo.equals("volta")) {
                 try {

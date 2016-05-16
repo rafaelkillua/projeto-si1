@@ -17,6 +17,7 @@ public class CatalogoCaronas {
     }
 
     public void adicionarCaronas(Carona carona){
+        carona.save();
         catalogoCaronas.add(carona);
     }
 
@@ -50,6 +51,10 @@ public class CatalogoCaronas {
             }
         }
         return caronas;
+    }
+
+    public void setCatalogoCaronas(List<Carona> catalogoCaronas) {
+        this.catalogoCaronas = catalogoCaronas;
     }
 
     public int quantidadeDeCaronas() {

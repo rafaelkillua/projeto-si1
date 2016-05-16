@@ -112,4 +112,19 @@ public class Carona extends Model {
 
         emailPassageiros.remove(passageiro);
     }
+
+    @Override
+    public String toString() {
+
+        return "Carona{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", hora='" + hora + '\'' +
+                ", rota=" + rota +
+                ", vagasDisponiveis=" + vagasDisponiveis +
+                ", motorista=" + motorista +
+                ", emailPassageiros=" + emailPassageiros +
+                ", tipo=" + tipo +
+                '}';
+    }
 }

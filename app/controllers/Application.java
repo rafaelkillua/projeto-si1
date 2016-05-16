@@ -1,5 +1,6 @@
 package controllers;
 
+import models.Carona;
 import models.CatalogoCaronas;
 import models.Usuario;
 import models.formularios.*;
@@ -24,7 +25,7 @@ public class Application extends Controller {
     private static CatalogoCaronas catalogoCaronas = new CatalogoCaronas();
 
     private Application() {
-
+        cadastrarUsuario(new Usuario("jef","jef@gmail.com","113210423","6693644","jef","15 de jan","centro",6));
     }
 
     public static Application getInstance() {
