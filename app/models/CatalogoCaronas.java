@@ -10,13 +10,16 @@ import java.util.List;
  */
 public class CatalogoCaronas {
 
-    private List<Carona> catalogoCaronas;
+    private List<Carona> catalogoCaronas = new ArrayList<>();
 
     public CatalogoCaronas() {
-        catalogoCaronas = new ArrayList<>();
+        setCatalogoCaronas(Carona.find
+                .fetch("rota").fetch("motorista").fetch("passageiros").fetch("motorista.solicitacoesRecebidas")
+                .findList());
     }
 
     public void adicionarCaronas(Carona carona){
+        carona.getRota().save();
         carona.save();
         catalogoCaronas.add(carona);
     }
@@ -35,7 +38,7 @@ public class CatalogoCaronas {
 
     private List<Carona> pesquisaCaronasIda(List<Carona> caronas, String hora, String bairro) {
         for (Carona carona: catalogoCaronas) {
-            if(carona.getTipoCarona() == TipoCarona.IDA && carona.getHora().equals(hora) && (carona.getRota().getEnderecoPartida().getBairro().equalsIgnoreCase(bairro))
+            if(carona.getTipo() == TipoCarona.IDA && carona.getHora().equals(hora) && (carona.getRota().getEnderecoPartida().getBairro().equalsIgnoreCase(bairro))
                     && carona.temVagaDisponivel()) {
                 caronas.add(carona);
             }
@@ -45,7 +48,7 @@ public class CatalogoCaronas {
 
     private List<Carona> pesquisaCaronasVolta(List<Carona> caronas, String hora, String bairro) {
         for (Carona carona: catalogoCaronas) {
-            if(carona.getTipoCarona() == TipoCarona.VOLTA && carona.getHora().equals(hora) &&
+            if(carona.getTipo() == TipoCarona.VOLTA && carona.getHora().equals(hora) &&
                     (carona.getRota().getEnderecoDestino().getBairro().equalsIgnoreCase(bairro)) && carona.temVagaDisponivel()) {
                 caronas.add(carona);
             }
@@ -54,12 +57,27 @@ public class CatalogoCaronas {
     }
 
     public void setCatalogoCaronas(List<Carona> catalogoCaronas) {
-        this.catalogoCaronas = catalogoCaronas;
+        this.catalogoCaronas.addAll(catalogoCaronas);
     }
 
     public int quantidadeDeCaronas() {
         return catalogoCaronas.size();
     }
 
+    public int pesquisaPosicaoCarona(Carona car) throws Exception {
+        for (int i = 0; i < catalogoCaronas.size(); i++) {
+            if (catalogoCaronas.get(i) == car) {
+                return i;
+            }
+        }
+        throw new Exception("Carona não encontrada");
+    }
+
+    @Override
+    public String toString() {
+        return "CatalogoCaronas{" +
+                "catalogoCaronas=" + catalogoCaronas +
+                '}';
+    }
 
 }

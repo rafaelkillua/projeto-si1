@@ -16,13 +16,13 @@ public class Carona extends Model {
     public static Model.Finder<Long,Carona> find = new Model.Finder<>(Carona.class);
 
     @Id @GeneratedValue private Long id;
-    @OneToOne private Rota rota;
-    @OneToOne private Usuario motorista;
+    @OneToOne (fetch = FetchType.LAZY) private Rota rota;
+    @ManyToOne (fetch = FetchType.LAZY) private Usuario motorista;
     private String hora;
     private int vagasDisponiveis;
     private TipoCarona tipo;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany (fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "carona_passageiros",
                joinColumns = @JoinColumn (name = "id_carona"),
                inverseJoinColumns = @JoinColumn (name = "id_passageiro"))
@@ -37,16 +37,12 @@ public class Carona extends Model {
         this.tipo = tipo;
     }
 
-    public TipoCarona getTipoCarona() {
-        return this.tipo;
-    }
-
     public boolean isIda() {
-        return getTipoCarona() == TipoCarona.IDA;
+        return getTipo() == TipoCarona.IDA;
     }
 
     public boolean isVolta() {
-        return getTipoCarona() == TipoCarona.VOLTA;
+        return getTipo() == TipoCarona.VOLTA;
     }
 
     public String getTipoString() {
@@ -65,12 +61,8 @@ public class Carona extends Model {
         return id;
     }
 
-    public String getHora() {
-        return hora;
-    }
-
-    public void setHora(String hora) {
-        this.hora = hora;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Rota getRota() {
@@ -81,6 +73,22 @@ public class Carona extends Model {
         this.rota = rota;
     }
 
+    public Usuario getMotorista() {
+        return motorista;
+    }
+
+    public void setMotorista(Usuario motorista) {
+        this.motorista = motorista;
+    }
+
+    public String getHora() {
+        return hora;
+    }
+
+    public void setHora(String hora) {
+        this.hora = hora;
+    }
+
     public int getVagasDisponiveis() {
         return vagasDisponiveis;
     }
@@ -89,19 +97,19 @@ public class Carona extends Model {
         this.vagasDisponiveis = vagasDisponiveis;
     }
 
-    public Usuario getMotorista() {
-        return motorista;
+    public TipoCarona getTipo() {
+        return tipo;
     }
 
-    public void setMotorista(Usuario novoMotorista) {
-        this.motorista = novoMotorista;
+    public void setTipo(TipoCarona tipo) {
+        this.tipo = tipo;
     }
 
     public List<Usuario> getPassageiros() {
         return passageiros;
     }
 
-    public void setPassageiros(ArrayList<Usuario> passageiros) {
+    public void setPassageiros(List<Usuario> passageiros) {
         this.passageiros = passageiros;
     }
 

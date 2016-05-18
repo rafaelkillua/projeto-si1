@@ -20,7 +20,7 @@ public class Usuario extends Model {
     @Embedded private Endereco endereco;
     @Transient private List<Carona> pesquisasDoUsuario;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany (fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "solicitacoes_recebidas",
             joinColumns = @JoinColumn (name = "id_usuario"),
             inverseJoinColumns = @JoinColumn (name = "id_carona"))
@@ -34,12 +34,16 @@ public class Usuario extends Model {
         setMatricula(matricula);
         setTelefone(telefone);
         setSenha(senha);
-        setEndereco(rua, bairro);
+        setEnderecoString(rua, bairro);
         setQuantidadeDeVagas(quantidadeDeVagas);
     }
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -82,14 +86,6 @@ public class Usuario extends Model {
         this.senha = senha;
     }
 
-    public Endereco getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(String rua, String bairro) {
-        this.endereco = new Endereco(rua, bairro);
-    }
-
     public int getQuantidadeDeVagas() {
         return quantidadeDeVagas;
     }
@@ -98,12 +94,16 @@ public class Usuario extends Model {
         this.quantidadeDeVagas = quantidadeDeVagas;
     }
 
-    public List<Carona> getSolicitacoesRecebidas() {
-        return solicitacoesRecebidas;
+    public Endereco getEndereco() {
+        return endereco;
     }
 
-    public Carona getCaronaPorPosicao(int pos) {
-        return solicitacoesRecebidas.get(pos);
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
+    public void setEnderecoString(String rua, String bairro) {
+        this.endereco = new Endereco(rua, bairro);
     }
 
     public List<Carona> getPesquisasDoUsuario() {
@@ -114,6 +114,17 @@ public class Usuario extends Model {
         this.pesquisasDoUsuario = pesquisasDoUsuario;
     }
 
+    public List<Carona> getSolicitacoesRecebidas() {
+        return solicitacoesRecebidas;
+    }
+
+    public void setSolicitacoesRecebidas(List<Carona> solicitacoesRecebidas) {
+        this.solicitacoesRecebidas = solicitacoesRecebidas;
+    }
+
+    public Carona getCaronaPorPosicao(int pos) {
+        return solicitacoesRecebidas.get(pos);
+    }
 
     public void validaSenha(String senha) throws Exception {
         if (!getSenha().equals(senha)) {

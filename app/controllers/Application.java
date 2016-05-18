@@ -1,6 +1,5 @@
 package controllers;
 
-import models.Carona;
 import models.CatalogoCaronas;
 import models.Usuario;
 import models.formularios.*;
@@ -25,9 +24,9 @@ public class Application extends Controller {
     private static CatalogoCaronas catalogoCaronas = new CatalogoCaronas();
 
     private Application() {
-        usuariosCadastrados = Usuario.find.findList();
-        catalogoCaronas.setCatalogoCaronas(Carona.find.findList());
+        usuariosCadastrados = Usuario.find.fetch("solicitacoesRecebidas").findList();
     }
+
 
     public static Application getInstance() {
         return instance;
