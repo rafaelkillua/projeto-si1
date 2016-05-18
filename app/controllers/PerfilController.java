@@ -25,7 +25,8 @@ public class PerfilController extends Controller {
                 usuarioLogado.setEmail(perfil.email);
                 session("logado", usuarioLogado.getEmail());
                 usuarioLogado.setQuantidadeDeVagas(perfil.quantidadeDeVagas);
-                usuarioLogado.setEndereco(perfil.rua, perfil.bairro);
+                usuarioLogado.setEnderecoString(perfil.rua, perfil.bairro);
+                usuarioLogado.update();
                 flash("success", Messages.get("success.profile"));
                 Calendar horaFinal = Calendar.getInstance();
                 Logger.info("Usuário " + usuarioLogado.getEmail() + " atualizou o perfil em " +
