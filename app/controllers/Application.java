@@ -25,7 +25,8 @@ public class Application extends Controller {
     private static CatalogoCaronas catalogoCaronas = new CatalogoCaronas();
 
     private Application() {
-
+        usuariosCadastrados = Usuario.find.findList();
+        catalogoCaronas.setCatalogoCaronas(Carona.find.findList());
     }
 
     public static Application getInstance() {
@@ -61,6 +62,7 @@ public class Application extends Controller {
     }
 
     public void cadastrarUsuario(Usuario usuario) {
+        usuario.save();
         usuariosCadastrados.add(usuario);
     }
 
