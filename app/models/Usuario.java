@@ -1,23 +1,32 @@
 package models;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.avaje.ebean.Model;
 
-public class Usuario {
+import javax.persistence.*;
+import java.util.*;
+
+@Entity
+public class Usuario extends Model {
+
+    public static Model.Finder<Long, Usuario> find = new Model.Finder<>(Usuario.class);
+
+    @Id @GeneratedValue private Long id;
     private String nome;
     private String email;
     private String matricula;
     private String telefone;
     private String senha;
-    private Endereco endereco;
     private int quantidadeDeVagas;
-    private List<Integer> solicitacoesEnviadas;
-    private List<Integer> solicitacoesRecebidas;
-    private List<Carona> pesquisasDoUsuario;
+    @Embedded private Endereco endereco;
+    @Transient private List<Carona> pesquisasDoUsuario;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "solicitacoes_recebidas",
+            joinColumns = @JoinColumn (name = "id_usuario"),
+            inverseJoinColumns = @JoinColumn (name = "id_carona"))
+    private List<Carona> solicitacoesRecebidas;
 
-    public Usuario(String nome, String email, String matricula, String telefone, String senha, String rua, String bairro, int quantidadeDeVagas){
-        solicitacoesEnviadas = new ArrayList<>();
+    public Usuario(String nome, String email, String matricula, String telefone, String senha, String rua, String bairro, int quantidadeDeVagas) {
         solicitacoesRecebidas = new ArrayList<>();
         pesquisasDoUsuario = new ArrayList<>();
         setNome(nome);
@@ -27,6 +36,10 @@ public class Usuario {
         setSenha(senha);
         setEndereco(rua, bairro);
         setQuantidadeDeVagas(quantidadeDeVagas);
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getNome() {
@@ -85,12 +98,12 @@ public class Usuario {
         this.quantidadeDeVagas = quantidadeDeVagas;
     }
 
-    public List<Integer> getSolicitacoesEnviadas() {
-        return solicitacoesEnviadas;
+    public List<Carona> getSolicitacoesRecebidas() {
+        return solicitacoesRecebidas;
     }
 
-    public List<Integer> getSolicitacoesRecebidas() {
-        return solicitacoesRecebidas;
+    public Carona getCaronaPorPosicao(int pos) {
+        return solicitacoesRecebidas.get(pos);
     }
 
     public List<Carona> getPesquisasDoUsuario() {
@@ -106,5 +119,29 @@ public class Usuario {
         if (!getSenha().equals(senha)) {
             throw new Exception("E-mail ou senha* não conferem");
         }
+    }
+
+    public void solicitar(Carona carona) {
+        solicitacoesRecebidas.add(carona);
+    }
+
+    public void removerSolicitacao(Carona carona) {
+        solicitacoesRecebidas.remove(carona);
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", email='" + email + '\'' +
+                ", matricula='" + matricula + '\'' +
+                ", telefone='" + telefone + '\'' +
+                ", senha='" + senha + '\'' +
+                ", quantidadeDeVagas=" + quantidadeDeVagas +
+                ", endereco=" + endereco +
+                ", pesquisasDoUsuario=" + pesquisasDoUsuario +
+                ", solicitacoesRecebidas=" + solicitacoesRecebidas +
+                '}';
     }
 }

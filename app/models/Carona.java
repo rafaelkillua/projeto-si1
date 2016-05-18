@@ -3,7 +3,7 @@ package models;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
-import play.data.validation.Constraints;
+
 import com.avaje.ebean.Model;
 
 /**
@@ -13,28 +13,26 @@ import com.avaje.ebean.Model;
 @Entity
 public class Carona extends Model {
 
-    private static final long serialVersionUID = 1L;
+    public static Model.Finder<Long,Carona> find = new Model.Finder<>(Carona.class);
 
-    @Id
-    public Long id;
-
-    @Constraints.Required
-    public String nome;
-
-    public static Model.Finder<Long,Carona> find = new Model.Finder<Long,Carona>(Carona.class);
-
+    @Id @GeneratedValue private Long id;
+    @OneToOne private Rota rota;
+    @OneToOne private Usuario motorista;
     private String hora;
-    private Rota rota;
     private int vagasDisponiveis;
-    private Usuario motorista;
-    private List<String> emailPassageiros;
     private TipoCarona tipo;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "carona_passageiros",
+               joinColumns = @JoinColumn (name = "id_carona"),
+               inverseJoinColumns = @JoinColumn (name = "id_passageiro"))
+    private List<Usuario> passageiros;
 
     public Carona(String hora, Endereco partida, Endereco destino, Usuario motorista, int vagasDisponiveis, TipoCarona tipo) {
         this.hora = hora;
         rota = new Rota(partida, destino);
         this.motorista = motorista;
-        emailPassageiros = new ArrayList<>();
+        passageiros = new ArrayList<>();
         this.vagasDisponiveis = vagasDisponiveis;
         this.tipo = tipo;
     }
@@ -61,6 +59,10 @@ public class Carona extends Model {
 
     public boolean temVagaDisponivel() {
         return getVagasDisponiveis() > 0;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getHora() {
@@ -95,36 +97,34 @@ public class Carona extends Model {
         this.motorista = novoMotorista;
     }
 
-    public List<String> getEmailPassageiros() {
-        return emailPassageiros;
+    public List<Usuario> getPassageiros() {
+        return passageiros;
     }
 
-    public void setEmailPassageiros(ArrayList<String> emailPassageiros) {
-        this.emailPassageiros = emailPassageiros;
+    public void setPassageiros(ArrayList<Usuario> passageiros) {
+        this.passageiros = passageiros;
     }
 
-    public void adicionarPassageiro(String passageiro){
-
-        emailPassageiros.add(passageiro);
+    public void adicionarPassageiro(Usuario passageiro){
+        passageiros.add(passageiro);
+        vagasDisponiveis--;
     }
 
     public void removerPassageiro(String passageiro){
-
-        emailPassageiros.remove(passageiro);
+        passageiros.remove(passageiro);
+        vagasDisponiveis++;
     }
 
     @Override
     public String toString() {
-
         return "Carona{" +
                 "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", hora='" + hora + '\'' +
                 ", rota=" + rota +
-                ", vagasDisponiveis=" + vagasDisponiveis +
                 ", motorista=" + motorista +
-                ", emailPassageiros=" + emailPassageiros +
+                ", hora='" + hora + '\'' +
+                ", vagasDisponiveis=" + vagasDisponiveis +
                 ", tipo=" + tipo +
+                ", passageiros=" + passageiros +
                 '}';
     }
 }
