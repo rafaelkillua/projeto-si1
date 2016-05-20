@@ -1,9 +1,6 @@
 package controllers;
 
-import models.Carona;
-import models.Endereco;
-import models.TipoCarona;
-import models.Usuario;
+import models.*;
 import models.formularios.FormularioCarona;
 import models.formularios.FormularioPesquisa;
 import play.Logger;
@@ -97,6 +94,45 @@ public class CaronaController extends Controller {
         }
 
         return redirect("/resultadoPesquisa/1");
+    }
+
+    public Result solicitar(Integer posicaoCaronaPesquisas) {
+        try {
+            Usuario usuarioSolicitando = Application.getInstance().getUsuarioLogado();
+            Carona carona = Application.getInstance().getUsuarioLogado().getPesquisasDoUsuario().get(posicaoCaronaPesquisas);
+            carona.getMotorista().solicitar(carona, usuarioSolicitando);
+            flash("success", "Carona solicitada com sucesso.");
+            Logger.info(usuarioSolicitando.getEmail() + " solicitou carona de " + carona.getMotorista().getEmail());
+        } catch (Exception e) {
+            flash("error", "Erro ao solicitar - " + e.getMessage());
+        }
+        return redirect("/resultadoPesquisa/1");
+    }
+
+    public Result aceitarSolicitacao (Integer posicaoCaronaSolicitacoes) {
+        try {
+            Solicitacao solicitacao = Application.getInstance().getUsuarioLogado().getSolicitacoesRecebidas().get(posicaoCaronaSolicitacoes);
+            solicitacao.getCaronaSolicitada().getMotorista().aceitarSolicitacao(solicitacao);
+            flash("success", "Carona aceita com sucesso.");
+            Logger.info(solicitacao.getCaronaSolicitada().getMotorista().getEmail() + " aceitou solicitação de carona de " + solicitacao.getUsuarioSolicitando().getEmail());
+        } catch (Exception e) {
+            flash("error", "Erro ao aceitar solicitação - " + e.getMessage());
+            e.printStackTrace();
+        }
+        return redirect("/solicitacoes/1");
+    }
+
+    public Result recusarSolicitacao (Integer posicaoCaronaSolicitacoes) {
+        try {
+            Solicitacao solicitacao = Application.getInstance().getUsuarioLogado().getSolicitacoesRecebidas().get(posicaoCaronaSolicitacoes);
+            solicitacao.getCaronaSolicitada().getMotorista().removerSolicitacao(solicitacao);
+            flash("success", "Carona recusada com sucesso.");
+            Logger.info(solicitacao.getCaronaSolicitada().getMotorista().getEmail() + " recusou solicitação de carona de " + solicitacao.getUsuarioSolicitando().getEmail());
+        } catch (Exception e) {
+            flash("error", "Erro ao recusar solicitação - " + e.getMessage());
+            e.printStackTrace();
+        }
+        return redirect("/solicitacoes/1");
     }
 
     private Carona criarCaronaIda(FormularioCarona formCarona) throws Exception {

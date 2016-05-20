@@ -23,8 +23,8 @@ public class Usuario extends Model {
     @ManyToMany (fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "solicitacoes_recebidas",
             joinColumns = @JoinColumn (name = "id_usuario"),
-            inverseJoinColumns = @JoinColumn (name = "id_carona"))
-    private List<Carona> solicitacoesRecebidas;
+            inverseJoinColumns = @JoinColumn (name = "id_solicitacao"))
+    private List<Solicitacao> solicitacoesRecebidas;
 
     public Usuario(String nome, String email, String matricula, String telefone, String senha, String rua, String bairro, int quantidadeDeVagas) {
         solicitacoesRecebidas = new ArrayList<>();
@@ -114,16 +114,12 @@ public class Usuario extends Model {
         this.pesquisasDoUsuario = pesquisasDoUsuario;
     }
 
-    public List<Carona> getSolicitacoesRecebidas() {
+    public List<Solicitacao> getSolicitacoesRecebidas() {
         return solicitacoesRecebidas;
     }
 
-    public void setSolicitacoesRecebidas(List<Carona> solicitacoesRecebidas) {
+    public void setSolicitacoesRecebidas(List<Solicitacao> solicitacoesRecebidas) {
         this.solicitacoesRecebidas = solicitacoesRecebidas;
-    }
-
-    public Carona getCaronaPorPosicao(int pos) {
-        return solicitacoesRecebidas.get(pos);
     }
 
     public void validaSenha(String senha) throws Exception {
@@ -132,12 +128,22 @@ public class Usuario extends Model {
         }
     }
 
-    public void solicitar(Carona carona) {
-        solicitacoesRecebidas.add(carona);
+    public void solicitar(Carona caronaSolicitada, Usuario usuarioSolicitando) {
+        Solicitacao solicitacao = new Solicitacao(caronaSolicitada, usuarioSolicitando);
+        solicitacao.save();
+        solicitacoesRecebidas.add(solicitacao);
+        update();
     }
 
-    public void removerSolicitacao(Carona carona) {
-        solicitacoesRecebidas.remove(carona);
+    public void removerSolicitacao(Solicitacao solicitacao) {
+        solicitacoesRecebidas.remove(solicitacao);
+        update();
+        solicitacao.delete();
+    }
+
+    public void aceitarSolicitacao(Solicitacao solicitacao) {
+        solicitacao.getCaronaSolicitada().adicionarPassageiro(solicitacao.getUsuarioSolicitando());
+        removerSolicitacao(solicitacao);
     }
 
     @Override
@@ -152,7 +158,6 @@ public class Usuario extends Model {
                 ", quantidadeDeVagas=" + quantidadeDeVagas +
                 ", endereco=" + endereco +
                 ", pesquisasDoUsuario=" + pesquisasDoUsuario +
-                ", solicitacoesRecebidas=" + solicitacoesRecebidas +
                 '}';
     }
 }

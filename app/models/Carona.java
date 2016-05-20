@@ -20,6 +20,7 @@ public class Carona extends Model {
     @ManyToOne (fetch = FetchType.LAZY) private Usuario motorista;
     private String hora;
     private int vagasDisponiveis;
+    private int vagasAtuais;
     private TipoCarona tipo;
 
     @ManyToMany (fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -34,6 +35,7 @@ public class Carona extends Model {
         this.motorista = motorista;
         passageiros = new ArrayList<>();
         this.vagasDisponiveis = vagasDisponiveis;
+        this.vagasAtuais = vagasDisponiveis;
         this.tipo = tipo;
     }
 
@@ -97,6 +99,14 @@ public class Carona extends Model {
         this.vagasDisponiveis = vagasDisponiveis;
     }
 
+    public int getVagasAtuais() {
+        return vagasAtuais;
+    }
+
+    public void setVagasAtuais(int vagasAtuais) {
+        this.vagasAtuais = vagasAtuais;
+    }
+
     public TipoCarona getTipo() {
         return tipo;
     }
@@ -115,12 +125,14 @@ public class Carona extends Model {
 
     public void adicionarPassageiro(Usuario passageiro){
         passageiros.add(passageiro);
-        vagasDisponiveis--;
+        vagasAtuais--;
+        update();
     }
 
     public void removerPassageiro(String passageiro){
         passageiros.remove(passageiro);
-        vagasDisponiveis++;
+        vagasAtuais++;
+        update();
     }
 
     @Override

@@ -31,8 +31,13 @@
                                 <li class="navbarButton"><a href="/oferecerCarona">@Messages.get("index.offerRide")</a></li>
                                 <li class="navbarButton"><a href="/pesquisarCarona">
                                     @Messages.get("index.searchRide")<span class="badge"></span></a></li>
-                                <li class="navbarButton"><a href="/solicitacoes">
-                                    @Messages.get("index.rideRequests") <span class="badge">@usuario.getSolicitacoesRecebidas().size()</span></a></li>
+                                <li class="navbarButton"><a href="/solicitacoes/1">
+                                    @Messages.get("index.rideRequests") @if(usuario.getSolicitacoesRecebidas().size() > 0) {
+                                    <span class="label label-primary label-pill">@usuario.getSolicitacoesRecebidas().size()</span>
+                                } else {
+                                    <span class="label label-default label-pill">@usuario.getSolicitacoesRecebidas().size()</span>
+                                }
+                                </a></li>
                                 <li class="navbarButton"><a href="/deslogar" type="button">
                                 @Messages.get("index.logout")</a></li>
                             </ul>

@@ -1,21 +1,97 @@
 @import play.i18n._
 
-@(usuario: Usuario)
+@(usuario: Usuario)(pagina: Integer)
+
+@solicitacao(pos: Integer) = @{
+    usuario.getSolicitacoesRecebidas().get(pos)
+}
 
 @index("CaronaUFCG - Solicitações Recebidas")(usuario) {
     <div class ="container">
         <legend align="center">@Messages.get("requests.title")</legend>
+
         <div class="row">
-            <div class="col-sm-4">
-                <ul><img src="@routes.Assets.versioned("/images/ronaldinho.jpg")" class="img-circle" alt="Passageiro 1" width="136" height="136"> </ul>
-                <ul>@Messages.get("requests.passenger"): Passageiro1</ul>
-                <ul>@Messages.get("requests.street"): Rodrigues Alves</ul>
-                <ul>@Messages.get("requests.phone"): (83) 98765 4321</ul>
-                <ul>@Messages.get("requests.district"): Bela Vista</ul>
-                <ul>@Messages.get("requests.hour"): 7:40</ul>
-                <ul><button id="solicitarCarona" name = "solicitarCarona" class ="btn btn-success" onclick="aceitarSolicitacao()">@Messages.get("button.accept")</button>
-                    <button id="solicitarCarona" name = "solicitarCarona" class ="btn btn-danger" onclick="recusarSolicitacao()">@Messages.get("button.refuse")</button></ul>
-            </div>
+            @if(flash.contains("error")) {
+                <div class="col-md-4"></div>
+                <div class="col-md-4 alert alert-danger">
+                @flash.get("error")
+                </div>
+                <div class="col-md-4"></div>
+            }
+            @if(flash.contains("success")) {
+                <div class="col-md-4"></div>
+                <div class="col-md-4 alert alert-success">
+                @flash.get("success")
+                </div>
+                <div class="col-md-4"></div>
+            }
+        </div>
+
+        <div class="row">
+        @for(pos <- (pagina - 1) * 4 until (pagina * 4)) {
+            @if(pos < usuario.getSolicitacoesRecebidas().size()) {
+                <div class="col-md-3">
+                    <ul><img src="@routes.Assets.versioned("/images/user.png")" class="img-circle" alt="motorista" width="136" height="136"> </ul>
+                    <ul>@Messages.get("resultRide.type"): @solicitacao(pos).getCaronaSolicitada().getTipoString()</ul>
+                    <ul>@Messages.get("resultRide.driver"): @solicitacao(pos).getCaronaSolicitada().getMotorista().getNome()</ul>
+                    <ul>@Messages.get("resultRide.phone"): @solicitacao(pos).getCaronaSolicitada().getMotorista().getTelefone()</ul>
+                    @if(solicitacao(pos).getCaronaSolicitada().isIda()) {
+                        <ul>@Messages.get("resultRide.district")
+                            : @solicitacao(pos).getCaronaSolicitada().getRota().getEnderecoPartida().getBairro()</ul>
+                        <ul>@Messages.get("resultRide.street"): @solicitacao(pos).getCaronaSolicitada().getRota().getEnderecoPartida().getRua()</ul>
+                    } else {
+                        <ul>@Messages.get("resultRide.district")
+                            : @solicitacao(pos).getCaronaSolicitada().getRota().getEnderecoDestino().getBairro()</ul>
+                        <ul>@Messages.get("resultRide.street"): @solicitacao(pos).getCaronaSolicitada().getRota().getEnderecoDestino().getRua()</ul>
+                    }
+                    <ul>@Messages.get("resultRide.departureTime"): @solicitacao(pos).getCaronaSolicitada().getHora()</ul>
+                    <ul>@Messages.get("resultRide.spotCount"): @solicitacao(pos).getCaronaSolicitada().getVagasDisponiveis()</ul>
+                    <ul> Usuário solicitando: @solicitacao(pos).getUsuarioSolicitando().getNome() (@solicitacao(pos).getUsuarioSolicitando.getEmail())</ul>
+                    <ul> Endereço: @solicitacao(pos).getUsuarioSolicitando().getEndereco().getRua(), @solicitacao(pos).getUsuarioSolicitando().getEndereco().getBairro()</ul>
+                    <ul>
+                        <button id="aceitarSolicitacao" name = "aceitarSolicitacao" class ="btn btn-success btn-xs" data-toggle="modal" data-target="#aceitar_@pos">
+                        @Messages.get("button.accept")</button>
+                        <a role="button" href="/solicitacoes/recusar/@pos" id="recusarSolicitacao" name = "aceitarSolicitacao" class ="btn btn-danger btn-xs" >
+                        @Messages.get("button.refuse")</a>
+                    </ul>
+                </div>
+            }
+        }
+        </div>
+        <div class="row" align="center">
+            <ul class="pagination">
+            @for(pagination <- 1 to (usuario.getSolicitacoesRecebidas().size() - 1) / 4 + 1) {
+                @if(pagination == pagina) {
+                    <li class="active"><a href="/solicitacoes/@pagination">@pagination</a></li>
+                } else {
+                    <li><a href="/solicitacoes/@pagination" role="button">@pagination</a></li>
+                }
+            }
+            </ul>
         </div>
     </div>
+
+
+    @for(pos <- (pagina - 1) * 4 until (pagina * 4)) {
+        @if(pos < usuario.getSolicitacoesRecebidas().size()) {
+            <div id="aceitar_@pos" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Aceitar Carona</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Deseja aceitar esse passageiro @solicitacao(pos).getUsuarioSolicitando().getNome() (@solicitacao(pos).getUsuarioSolicitando.getEmail())?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <a role="button" class="btn btn-success" href="/solicitacoes/aceitar/@pos">Aceitar</a>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        }
+    }
 }

@@ -13,6 +13,23 @@
         <legend align="center">@Messages.get("resultRide.found", Integer.valueOf(usuario.getPesquisasDoUsuario().size()))</legend>
 
         <div class="row">
+            @if(flash.contains("error")) {
+                <div class="col-md-4"></div>
+                <div class="col-md-4 alert alert-danger">
+                @flash.get("error")
+                </div>
+                <div class="col-md-4"></div>
+            }
+            @if(flash.contains("success")) {
+                <div class="col-md-4"></div>
+                <div class="col-md-4 alert alert-success">
+                @flash.get("success")
+                </div>
+                <div class="col-md-4"></div>
+            }
+        </div>
+
+        <div class="row">
             @for(pos <- (pagina - 1) * 4 until (pagina * 4)) {
                 @if(pos < usuario.getPesquisasDoUsuario().size()) {
                     <div class="col-md-3">
@@ -30,11 +47,11 @@
                             <ul>@Messages.get("resultRide.street"): @carona(pos).getRota.getEnderecoDestino.getRua()</ul>
                         }
                         <ul>@Messages.get("resultRide.departureTime"): @carona(pos).getHora()</ul>
-                        <ul>@Messages.get("resultRide.spotCount"): @carona(pos).getVagasDisponiveis()</ul>
+                        <ul>@Messages.get("resultRide.spotCount"): @carona(pos).getVagasAtuais()/@carona(pos).getVagasDisponiveis()</ul>
                         <ul>
-                            <button id="solicitarCarona" name = "solicitarCarona" class ="btn btn-success btn-xs" onclick="">
+                            <button id="solicitarCarona" name = "solicitarCarona" class ="btn btn-success btn-xs" data-toggle="modal" data-target="#solicitar_@pos">
                             @Messages.get("button.requestRide")</button>
-                            <button id="recusarOfertaCarona" name = "recusarOfertaCarona" class ="btn btn-danger btn-xs" onclick="">
+                            <button id="recusarOfertaCarona" name = "recusarOfertaCarona" class ="btn btn-danger btn-xs" >
                             @Messages.get("button.ignore")</button>
                         </ul>
                     </div>
@@ -53,6 +70,31 @@
             </ul>
         </div>
     </div>
+
+
+
+    @for(pos <- (pagina - 1) * 4 until (pagina * 4)) {
+        @if(pos < usuario.getPesquisasDoUsuario().size()) {
+            <div id="solicitar_@pos" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Solicitar Carona</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Deseja solicitar essa carona a @carona(pos).getMotorista().getNome() (@carona(pos).getMotorista().getEmail())?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <a role="button" class="btn btn-success" href="/solicitacoes/solicitar/@pos">Solicitar</a>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        }
+    }
 
 
 }

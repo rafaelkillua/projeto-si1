@@ -1,6 +1,7 @@
 package controllers;
 
 import models.Carona;
+import models.Solicitacao;
 import play.Logger;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -63,11 +64,12 @@ public class ViewController extends Controller {
         }
     }
 
-    public Result solicitacoes() throws Exception {
+    public Result solicitacoes(Integer pagina) throws Exception {
         try {
             Application.getInstance().getUsuarioLogado();
-            return ok(solicitacoes.render(Application.getInstance().getUsuarioLogado()));
+            return ok(solicitacoes.render(Application.getInstance().getUsuarioLogado(), pagina));
         } catch (Exception e) {
+            Logger.error(e.getMessage());
             return redirect("/");
         }
     }

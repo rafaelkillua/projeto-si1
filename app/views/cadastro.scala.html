@@ -73,11 +73,18 @@
                 <div id="erroSenhas" class="col-md-4 alert alert-danger" style="display: none">
                     @Messages.get("error.mismatchPasswords")
                 </div>
-                <div id="erroSenhas2" class="col-md-4 alert alert-danger" style="display: none">
-                    @Messages.get("error.invalidPassword")
-                </div>
             <div class="col-md-4"></div>
             </div>
+
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div id="erroSenhas2" class="col-md-4 alert alert-danger" style="display: none">
+                @Messages.get("error.invalidPassword")
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+
+
 
             <script language='javascript' type='text/javascript'>
                     function check(input) {

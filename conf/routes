@@ -18,7 +18,10 @@ POST    /criarCarona                controllers.CaronaController.criarCarona()
 GET     /pesquisarCarona            controllers.ViewController.pesquisarCarona()
 POST    /pesquisaCarona             controllers.CaronaController.pesquisaCarona()
 
-GET     /solicitacoes               controllers.ViewController.solicitacoes()
+GET     /solicitacoes/:pagina              controllers.ViewController.solicitacoes(pagina: Integer)
+GET     /solicitacoes/aceitar/:pos         controllers.CaronaController.aceitarSolicitacao(pos: Integer)
+GET     /solicitacoes/solicitar/:carona    controllers.CaronaController.solicitar(carona: Integer)
+GET     /solicitacoes/recusar/:carona      controllers.CaronaController.recusarSolicitacao(carona: Integer)
 
 GET     /perfil                     controllers.ViewController.perfil()
 POST    /atualizarPerfil            controllers.PerfilController.atualizarPerfil()
