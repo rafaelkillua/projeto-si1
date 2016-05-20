@@ -75,6 +75,8 @@ resultRide.district = District
 resultRide.street = Street
 resultRide.departureTime = Departure Time
 resultRide.spotCount = Available Spots
+resultRide.modal.body = Do you wish to request this ride to
+resultRide.modal.title = Request Ride
 
 requests.title = Received Requests
 requests.passenger = Passenger

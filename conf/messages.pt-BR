@@ -75,6 +75,8 @@ resultRide.district = Bairro
 resultRide.street = Rua
 resultRide.departureTime = Horário de Partida
 resultRide.spotCount = Quantidade de Vagas
+resultRide.modal.body = Deseja solicitar essa carona a
+resultRide.modal.title = Solicitar Carona
 
 requests.title = Solicitações Recebidas
 requests.passenger = Passageiro
