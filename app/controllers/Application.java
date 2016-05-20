@@ -24,14 +24,19 @@ public class Application extends Controller {
     private static CatalogoCaronas catalogoCaronas = new CatalogoCaronas();
 
     private Application() {
-        usuariosCadastrados = Usuario.find.
-                fetch("solicitacoesRecebidas").
-                fetch("solicitacoesRecebidas.caronaSolicitada").
-                fetch("solicitacoesRecebidas.caronaSolicitada.rota").
-                fetch("solicitacoesRecebidas.caronaSolicitada.motorista").
-                fetch("solicitacoesRecebidas.caronaSolicitada.passageiros").
-                fetch("solicitacoesRecebidas.usuarioSolicitando").
-                findList();
+        new Runnable(){
+            @Override
+            public void run() {
+                usuariosCadastrados = Usuario.find.
+                        fetch("solicitacoesRecebidas").
+                        fetch("solicitacoesRecebidas.caronaSolicitada").
+                        fetch("solicitacoesRecebidas.caronaSolicitada.rota").
+                        fetch("solicitacoesRecebidas.caronaSolicitada.motorista").
+                        fetch("solicitacoesRecebidas.caronaSolicitada.passageiros").
+                        fetch("solicitacoesRecebidas.usuarioSolicitando").
+                        findList();
+            }
+        };
     }
 
 

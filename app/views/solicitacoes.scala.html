@@ -32,22 +32,20 @@
             @if(pos < usuario.getSolicitacoesRecebidas().size()) {
                 <div class="col-md-3">
                     <ul><img src="@routes.Assets.versioned("/images/user.png")" class="img-circle" alt="motorista" width="136" height="136"> </ul>
-                    <ul>@Messages.get("resultRide.type"): @solicitacao(pos).getCaronaSolicitada().getTipoString()</ul>
-                    <ul>@Messages.get("resultRide.driver"): @solicitacao(pos).getCaronaSolicitada().getMotorista().getNome()</ul>
-                    <ul>@Messages.get("resultRide.phone"): @solicitacao(pos).getCaronaSolicitada().getMotorista().getTelefone()</ul>
+                    <ul>@Messages.get("requests.type"): @solicitacao(pos).getCaronaSolicitada().getTipoString()</ul>
                     @if(solicitacao(pos).getCaronaSolicitada().isIda()) {
-                        <ul>@Messages.get("resultRide.district")
+                        <ul>@Messages.get("requests.district")
                             : @solicitacao(pos).getCaronaSolicitada().getRota().getEnderecoPartida().getBairro()</ul>
-                        <ul>@Messages.get("resultRide.street"): @solicitacao(pos).getCaronaSolicitada().getRota().getEnderecoPartida().getRua()</ul>
+                        <ul>@Messages.get("requests.street"): @solicitacao(pos).getCaronaSolicitada().getRota().getEnderecoPartida().getRua()</ul>
                     } else {
-                        <ul>@Messages.get("resultRide.district")
+                        <ul>@Messages.get("requests.district")
                             : @solicitacao(pos).getCaronaSolicitada().getRota().getEnderecoDestino().getBairro()</ul>
-                        <ul>@Messages.get("resultRide.street"): @solicitacao(pos).getCaronaSolicitada().getRota().getEnderecoDestino().getRua()</ul>
+                        <ul>@Messages.get("requests.street"): @solicitacao(pos).getCaronaSolicitada().getRota().getEnderecoDestino().getRua()</ul>
                     }
-                    <ul>@Messages.get("resultRide.departureTime"): @solicitacao(pos).getCaronaSolicitada().getHora()</ul>
-                    <ul>@Messages.get("resultRide.spotCount"): @solicitacao(pos).getCaronaSolicitada().getVagasDisponiveis()</ul>
-                    <ul> Usuário solicitando: @solicitacao(pos).getUsuarioSolicitando().getNome() (@solicitacao(pos).getUsuarioSolicitando.getEmail())</ul>
-                    <ul> Endereço: @solicitacao(pos).getUsuarioSolicitando().getEndereco().getRua(), @solicitacao(pos).getUsuarioSolicitando().getEndereco().getBairro()</ul>
+                    <ul>@Messages.get("requests.departureTime"): @solicitacao(pos).getCaronaSolicitada().getHora()</ul>
+                    <ul>@Messages.get("requests.availableSpots"): @solicitacao(pos).getCaronaSolicitada().getVagasAtuais()</ul>
+                    <ul>@Messages.get("requests.userRequesting"): @solicitacao(pos).getUsuarioSolicitando().getNome() (@solicitacao(pos).getUsuarioSolicitando.getEmail())</ul>
+                    <ul>@Messages.get("requests.address"): @solicitacao(pos).getUsuarioSolicitando().getEndereco().getRua(), @solicitacao(pos).getUsuarioSolicitando().getEndereco().getBairro()</ul>
                     <ul>
                         <button id="aceitarSolicitacao" name = "aceitarSolicitacao" class ="btn btn-success btn-xs" data-toggle="modal" data-target="#aceitar_@pos">
                         @Messages.get("button.accept")</button>
@@ -79,14 +77,14 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Aceitar Carona</h4>
+                            <h4 class="modal-title">@Messages.get("requests.modal.titleAccept")</h4>
                         </div>
                         <div class="modal-body">
-                            <p>Deseja aceitar esse passageiro @solicitacao(pos).getUsuarioSolicitando().getNome() (@solicitacao(pos).getUsuarioSolicitando.getEmail())?</p>
+                            <p>@Messages.get("requests.modal.body") @solicitacao(pos).getUsuarioSolicitando().getNome() (@solicitacao(pos).getUsuarioSolicitando.getEmail())?</p>
                         </div>
                         <div class="modal-footer">
-                            <a role="button" class="btn btn-success" href="/solicitacoes/aceitar/@pos">Aceitar</a>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+                            <a role="button" class="btn btn-success" href="/solicitacoes/aceitar/@pos">@Messages.get("button.accept")</a>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">@Messages.get("button.cancel")</button>
                         </div>
                     </div>
 

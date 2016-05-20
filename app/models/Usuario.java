@@ -1,6 +1,7 @@
 package models;
 
 import com.avaje.ebean.Model;
+import play.i18n.Messages;
 
 import javax.persistence.*;
 import java.util.*;
@@ -124,7 +125,7 @@ public class Usuario extends Model {
 
     public void validaSenha(String senha) throws Exception {
         if (!getSenha().equals(senha)) {
-            throw new Exception("E-mail ou senha* não conferem");
+            throw new Exception(Messages.get("error.login"));
         }
     }
 
