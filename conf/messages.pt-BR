@@ -16,6 +16,7 @@ error.mismatchPasswords = Senhas não conferem
 error.requestRide = Erro ao solicitar
 error.acceptRequest = Erro ao aceitar solicitação
 error.refuseRequest = Erro ao recusar solicitação
+error.carSlots = Vaga deve ser maior ou igual a zero
 
 signup.title = Dados Pessoais
 signup.picture = Foto

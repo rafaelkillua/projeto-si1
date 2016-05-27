@@ -16,6 +16,7 @@ error.mismatchPasswords = Passwords don't match
 error.requestRide = Error at requesting ride
 error.acceptRequest = Error at accepting ride request
 error.refuseRequest = Error at refusing ride request
+error.carSlots = The slots must be greater or equal zero
 
 signup.title = Personal Data
 signup.picture = Picture
