@@ -106,7 +106,13 @@
                                 document.getElementById("erroSenhas").setAttribute("style", "display: none");
                             }
                         }
-
+                    }
+                    function checkVagas(input) {
+                        if(input.value < 0) {
+                            document.getElementById("vagas").removeAttribute("style");
+                        } else {
+                            document.getElementById("vagas").setAttribute("style", "display: none");
+                        }
                     }
             </script>
 
@@ -114,8 +120,16 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="quantidadeDeVagas"></label>
                 <div class="col-md-4">
-                @helper.inputText(formCadastro("quantidadeDeVagas"), 'class -> "form-control input-md", '_label -> "Quantidade de vagas:", 'required -> "", 'value -> "0", 'type -> "number")
+                @helper.inputText(formCadastro("quantidadeDeVagas"), 'class -> "form-control input-md", '_label -> "Quantidade de vagas:", 'required -> "", 'value -> "0", 'type -> "number",
+                    'oninput -> "checkVagas(this)")
                 </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div id="vagas" class="col-md-4 alert alert-danger" style="display: none">
+                @Messages.get("error.carSlots")
+                </div>
+                <div class="col-md-4"></div>
             </div>
 
             <legend align="center">@Messages.get("signup.addressTitle")</legend>
