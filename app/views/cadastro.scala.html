@@ -56,26 +56,9 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="senha"></label>
                 <div class="col-md-4">
-                @helper.inputPassword(formCadastro("senha"), 'id -> "senha", 'class -> "form-control input-md", '_label -> "Senha:", 'required -> "", 'oninput -> "check(this)")
+                @helper.inputPassword(formCadastro("senha"), 'id -> "senha", 'class -> "form-control input-md", '_label -> "Senha:", 'required -> "", 'oninput -> "checkPassword(this)")
                 </div>
             </div>
-
-                <!-- Password input-->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="confirmaSenha"></label>
-                <div class="col-md-4">
-                @helper.inputPassword(formCadastro("confirmaSenha"), 'id -> "confirmaSenha", 'class -> "form-control input-md", '_label -> "Repetir senha:", 'required -> "", 'oninput -> "check(this)")
-                </div>
-            </div>
-
-            <div class="row">
-            <div class="col-md-4"></div>
-                <div id="erroSenhas" class="col-md-4 alert alert-danger" style="display: none">
-                    @Messages.get("error.mismatchPasswords")
-                </div>
-            <div class="col-md-4"></div>
-            </div>
-
             <div class="row">
                 <div class="col-md-4"></div>
                 <div id="erroSenhas2" class="col-md-4 alert alert-danger" style="display: none">
@@ -83,16 +66,33 @@
                 </div>
                 <div class="col-md-4"></div>
             </div>
-
+                <!-- Password input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="confirmaSenha"></label>
+                <div class="col-md-4">
+                @helper.inputPassword(formCadastro("confirmaSenha"), 'id -> "confirmaSenha", 'class -> "form-control input-md", '_label -> "Repetir senha:", 'required -> "", 'oninput -> "comparePasswords(this)")
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div id="erroSenhas" class="col-md-4 alert alert-danger" style="display: none">
+                @Messages.get("error.mismatchPasswords")
+                </div>
+                <div class="col-md-4"></div>
+            </div>
 
 
             <script language='javascript' type='text/javascript'>
-                    function check(input) {
+                    function checkPassword(input) {
                         if (input.value != "" && input.value.length < 3) {
                             document.getElementById("erroSenhas2").removeAttribute("style");
                         } else {
                             document.getElementById("erroSenhas2").setAttribute("style", "display: none");
                         }
+
+                    }
+                    function comparePasswords(input) {
+
                         if (input.getAttribute("id") == "confirmaSenha") {
                             if (input.value != "" && input.value != document.getElementById("senha").value) {
                                 document.getElementById("erroSenhas").removeAttribute("style");
@@ -106,6 +106,7 @@
                                 document.getElementById("erroSenhas").setAttribute("style", "display: none");
                             }
                         }
+
                     }
             </script>
 
