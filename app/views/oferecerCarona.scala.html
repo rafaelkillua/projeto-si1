@@ -10,7 +10,7 @@
 
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="tipo">@Messages.get("offerRide.type"):</label>
-                    <div class="col-md-4">
+                    <div class="col-md-4" id="radioButton">
                         <input type="radio" name="tipo" value="ida" checked onclick="caronaIda()"> @Messages.get("offerRide.goToUFCG")
                         <input type="radio" name="tipo" value="volta" onclick="caronaVolta()"> @Messages.get("offerRide.backFromUFCG")
                         <input type="radio" name="tipo" value="idaVolta" onclick="caronaIdaVolta()"> @Messages.get("offerRide.goAndBackToUFCG")
